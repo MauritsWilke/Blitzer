@@ -1,0 +1,30 @@
+{
+	"name": "blitzer",
+	"version": "0.0.1",
+	"description": "An overlay for the Hypixel gamemode Blitz",
+	"main": "src",
+	"scripts": {
+		"setup": "npm run --silent startSetup",
+		"startSetup": "npm i",
+		"poststartSetup": "echo[  && echo Installed all Node Modules, run \"npm start\" to start the application && echo[",
+		"start": "electron ."
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/MauritsWilke/Blitzer.git"
+	},
+	"keywords": [
+		"blitz",
+		"hypixel",
+		"overlay"
+	],
+	"author": "Maurits Wilke; Toxicial",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/MauritsWilke/Blitzer/issues"
+	},
+	"homepage": "https://github.com/MauritsWilke/Blitzer#readme",
+	"devDependencies": {
+		"electron": "^15.0.0"
+	}
+}
