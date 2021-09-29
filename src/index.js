@@ -1,5 +1,6 @@
 const { app, BrowserWindow } = require('electron')
 const path = require('path')
+const config = require(`./config.json`)
 
 function createWindow() {
 	const mainWindow = new BrowserWindow({
@@ -11,6 +12,7 @@ function createWindow() {
 	})
 
 	mainWindow.loadFile('./src/index.html')
+	mainWindow.setBackgroundColor(config.background) // turns opaque brown
 }
 
 app.whenReady().then(() => {

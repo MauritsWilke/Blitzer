@@ -1,4 +1,6 @@
-function storeApiKey(input) {
-	console.log(input)
-	localStorage.setItem("API_KEY", document.getElementById(input).value)
-}
+const form = document.getElementById('apiKey');
+const key = form.elements['apiKey'];
+
+let emailAddress = key.value;
+
+console.log(emailAddress)

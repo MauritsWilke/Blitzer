@@ -6,16 +6,18 @@
 	<!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
 	<!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
 	<meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'"> -->
-	<title>Hello World!</title>
+	<title>Blitzer</title>
+
+	</style>
 
 	<script src="./scripts/utils.js"></script>
 </head>
 
-<body>
+<body style="-webkit-app-region: drag">
 	<h1>Input your API key here:</h1>
-	<form id="apiInput">
+	<form method="post" id="apiKey">
 		<input type="text" name="apiKey">
-		<input type="button" onclick="storeApiKey(apiInput)" value="Submit">
+		<input type="button" method="post" value="Submit">
 	</form>
 
 	<script src="./preload.js"></script>
