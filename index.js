@@ -1,13 +1,20 @@
+const electron = require('electron')
 const { app, BrowserWindow } = require('electron')
 const path = require('path')
-const config = require(`./config.json`)
+const config = require(`./src/config.json`)
 
 function createWindow() {
+	const { width } = electron.screen.getPrimaryDisplay().workAreaSize
 	const mainWindow = new BrowserWindow({
 		width: 800,
 		height: 600,
+		transparent: true,
+		x: width - 750,
+		y: 23,
+		frame: false,
+		icon: "./assets/blitzer-logo.ico",
 		webPreferences: {
-			preload: path.join(__dirname, 'preload.js')
+			preload: path.join(__dirname, '/src/preload.js')
 		}
 	})
 

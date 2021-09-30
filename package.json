@@ -2,7 +2,7 @@
 	"name": "blitzer",
 	"version": "0.0.1",
 	"description": "An overlay for the Hypixel gamemode Blitz",
-	"main": "src",
+	"main": "index.js",
 	"scripts": {
 		"setup": "npm run --silent startSetup",
 		"startSetup": "npm i",
