@@ -1,0 +1,14 @@
+:root {
+    --body-opacity: rgba(14, 14, 14, .60);
+    --corner: 15px;
+}
+
+@font-face {
+    font-family: "Varela";
+    font-style: normal;
+    src: url("../../font/VarelaRound-Regular.ttf")
+}
+
+.hidden {
+    display: none;
+}

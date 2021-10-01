@@ -14,12 +14,15 @@ function createWindow() {
 		frame: false,
 		icon: "./assets/blitzer-logo.ico",
 		webPreferences: {
-			preload: path.join(__dirname, '/src/preload.js')
+			preload: path.join(__dirname, '/src/preload.js'),
+			nodeIntegration: true, 
+			enableRemoteModule: true,
+			contextIsolation: false
 		}
 	})
 
-	mainWindow.loadFile('./src/index.html')
-	mainWindow.setBackgroundColor(config.background) // turns opaque brown
+	mainWindow.loadFile('./src/overlay.html')
+	// mainWindow.setBackgroundColor(config.background) // turns opaque brown
 }
 
 app.whenReady().then(() => {
