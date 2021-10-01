@@ -21,7 +21,7 @@ function createWindow() {
 		}
 	})
 
-	mainWindow.loadFile('./src/overlay.html')
+	mainWindow.loadFile('./src/html/overlay.html')
 	// mainWindow.setBackgroundColor(config.background) // turns opaque brown
 }
 
