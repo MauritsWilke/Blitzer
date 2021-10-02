@@ -1,5 +1,6 @@
 :root {
     --body-opacity: rgba(14, 14, 14, .60);
+    --temp-corner: 15px;
     --corner: 15px;
 }
 

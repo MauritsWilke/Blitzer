@@ -6,8 +6,8 @@
     position: fixed;
     user-select: none;
     background-color: var(--body-opacity);
-    border-top-left-radius: var(--corner);
-    border-top-right-radius: var(--corner);
+    border-top-left-radius: var(--temp-corner);
+    border-top-right-radius: var(--temp-corner);
 
     -webkit-app-region: drag;
 }
@@ -98,7 +98,7 @@
   }
   
   .windows_button.close:hover {
-    border-top-right-radius: var(--corner);
+    border-top-right-radius: var(--temp-corner);
     background-color: #d41224;
   }
   

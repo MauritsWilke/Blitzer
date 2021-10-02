@@ -6,6 +6,6 @@
     z-index: -1;
     position: fixed;
     
-    border-radius: var(--corner);
+    border-radius: var(--temp-corner);
     background-color: var(--body-opacity);
   }

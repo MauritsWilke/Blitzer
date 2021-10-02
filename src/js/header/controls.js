@@ -8,6 +8,9 @@ window.addEventListener("load", () => {
 
     let maximized = false
 
+    let style = getComputedStyle(document.body)
+    let root = document.documentElement.style
+
     close.forEach(button => {
         button.addEventListener("click", () => {
             win.close()
@@ -24,10 +27,14 @@ window.addEventListener("load", () => {
         button.addEventListener("click", () => {
             if (!maximized) {
                 win.maximize()
-                maximized = true      
+                maximized = true
+
+                root.setProperty('--temp-corner', 0)
             } else {
                 win.unmaximize()
                 maximized = false
+
+                root.setProperty('--temp-corner', style.getPropertyValue(`--corner`))
             }
         })
     })
