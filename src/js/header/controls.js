@@ -40,31 +40,33 @@ window.addEventListener("load", () => {
     })
 })
 
-window.addEventListener("load", () => {
-    let allPanel = document.querySelectorAll(".header-panel")
+// window.addEventListener("load", () => {
+//     let allPanel = document.querySelectorAll(".header-panel")
 
-    let home = document.getElementById("header-dropdown-home")
-    let translate = document.getElementById("header-dropdown-translate")
-    let settings = document.getElementById("header-dropdown-settings")
-    let homePanel = document.getElementById("home-panel")
-    let translatePanel = document.getElementById("translate-panel")
-    let settingsPanel = document.getElementById("settings-panel")
+//     let home = document.getElementById("header-dropdown-home")
+//     let translate = document.getElementById("header-dropdown-translate")
+//     let settings = document.getElementById("header-dropdown-settings")
 
-    home.addEventListener("click", () => {
-        allPanel.forEach(panel => panel.classList.add("hidden"))
+    
+//     let homePanel = document.getElementById("home-panel")
+//     let translatePanel = document.getElementById("translate-panel")
+//     let settingsPanel = document.getElementById("settings-panel")
 
-        homePanel.classList.toggle("hidden")
-    })
+//     home.addEventListener("click", () => {
+//         allPanel.forEach(panel => panel.classList.add("hidden"))
 
-    translate.addEventListener("click", () => {
-        allPanel.forEach(panel => panel.classList.add("hidden"))
+//         homePanel.classList.toggle("hidden")
+//     })
 
-        translatePanel.classList.toggle("hidden")
-    })
+//     translate.addEventListener("click", () => {
+//         allPanel.forEach(panel => panel.classList.add("hidden"))
 
-    settings.addEventListener("click", () => {
-        allPanel.forEach(panel => panel.classList.add("hidden"))
+//         translatePanel.classList.toggle("hidden")
+//     })
 
-        settingsPanel.classList.toggle("hidden")
-    })
-})
+//     settings.addEventListener("click", () => {
+//         allPanel.forEach(panel => panel.classList.add("hidden"))
+
+//         settingsPanel.classList.toggle("hidden")
+//     })
+// })

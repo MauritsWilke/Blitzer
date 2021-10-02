@@ -54,16 +54,17 @@
     -webkit-app-region: no-drag;
 }
 
-.header-dropdown-content span {
+.header-dropdown-content a {
     color: #FCFCFC;
     display: block;
     padding: 12px 16px;
     font-family: Varela;
     text-shadow: 1px 1px 1px black;
     border-radius: 6px;
+    text-decoration: none;
 }
 
-.header-dropdown-content span:hover {
+.header-dropdown-content a:hover {
     background-color: #101010;
 }
 
