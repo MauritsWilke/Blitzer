@@ -1,5 +1,7 @@
 const { remote } = require('electron')
+const storage = require('../js/utils/localStorage')
 const win = remote.getCurrentWindow()
+const localStorage = new storage.localStorage()
 
 window.addEventListener("load", () => {
     let close = document.querySelectorAll(".header-button-close")
@@ -30,43 +32,57 @@ window.addEventListener("load", () => {
                 maximized = true
 
                 root.setProperty('--temp-corner', 0)
+                root.setProperty('--temp-body-opacity-lighter', `rgba(16, 16, 16, 1)`)
+                root.setProperty('--temp-body-opacity', `rgba(14, 14, 14, 1)`)
+                root.setProperty('--temp-header-opacity', `rgba(13, 13, 13, 1)`)
             } else {
                 win.unmaximize()
                 maximized = false
 
                 root.setProperty('--temp-corner', style.getPropertyValue(`--corner`))
+                root.setProperty('--temp-body-opacity-lighter', style.getPropertyValue(`--body-opacity-lighter`))
+                root.setProperty('--temp-body-opacity', style.getPropertyValue(`--body-opacity`))
+                root.setProperty('--temp-header-opacity', style.getPropertyValue(`--header-opacity`))
             }
         })
     })
 })
 
-// window.addEventListener("load", () => {
-//     let allPanel = document.querySelectorAll(".header-panel")
+window.addEventListener("load", () => {
+    let allPanels = document.querySelectorAll(".panel")
 
-//     let home = document.getElementById("header-dropdown-home")
-//     let translate = document.getElementById("header-dropdown-translate")
-//     let settings = document.getElementById("header-dropdown-settings")
+    let overlay = document.getElementById("header-dropdown-overlay")
+    let statSearch = document.getElementById("header-dropdown-statSearch")
+    let tracking = document.getElementById("header-dropdown-tracking")
+    let settings = document.getElementById("header-dropdown-settings")
 
-    
-//     let homePanel = document.getElementById("home-panel")
-//     let translatePanel = document.getElementById("translate-panel")
-//     let settingsPanel = document.getElementById("settings-panel")
+    let overlayPanel = document.querySelector(".overlay")
+    let statSearchPanel = document.querySelector(".statSearch")
+    let trackingPanel = document.querySelector(".tracking")
+    let settingsPanel = document.querySelector(".settings")
 
-//     home.addEventListener("click", () => {
-//         allPanel.forEach(panel => panel.classList.add("hidden"))
 
-//         homePanel.classList.toggle("hidden")
-//     })
+    overlay.addEventListener("click", () => {
+        allPanels.forEach(panel => panel.classList.add("hidden"))
 
-//     translate.addEventListener("click", () => {
-//         allPanel.forEach(panel => panel.classList.add("hidden"))
+        overlayPanel.classList.toggle("hidden")
+    })
 
-//         translatePanel.classList.toggle("hidden")
-//     })
+    statSearch.addEventListener("click", () => {
+        allPanels.forEach(panel => panel.classList.add("hidden"))
 
-//     settings.addEventListener("click", () => {
-//         allPanel.forEach(panel => panel.classList.add("hidden"))
+        statSearchPanel.classList.toggle("hidden")
+    })
 
-//         settingsPanel.classList.toggle("hidden")
-//     })
-// })
+    tracking.addEventListener("click", () => {
+        allPanels.forEach(panel => panel.classList.add("hidden"))
+
+        trackingPanel.classList.toggle("hidden")
+    })
+
+    settings.addEventListener("click", () => {
+        allPanels.forEach(panel => panel.classList.add("hidden"))
+
+        settingsPanel.classList.toggle("hidden")
+    })
+})

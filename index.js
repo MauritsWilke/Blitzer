@@ -6,7 +6,7 @@ const config = require(`./src/config.json`)
 function createWindow() {
 	const { width } = electron.screen.getPrimaryDisplay().workAreaSize
 	const mainWindow = new BrowserWindow({
-		width: 800,
+		width: 1000,
 		height: 600,
 		transparent: true,
 		x: width - 750,

@@ -5,7 +5,7 @@
     height: 35px;
     position: fixed;
     user-select: none;
-    background-color: var(--body-opacity);
+    background-color: var(--temp-header-opacity);
     border-top-left-radius: var(--temp-corner);
     border-top-right-radius: var(--temp-corner);
 

@@ -1,5 +1,10 @@
 :root {
+    --temp-body-opacity-lighter: rgba(16, 16, 16, .60);
+    --temp-body-opacity: rgba(14, 14, 14, .60);
+    --body-opacity-lighter: rgba(16, 16, 16, .60);
     --body-opacity: rgba(14, 14, 14, .60);
+    --temp-header-opacity: rgba(13, 13, 13, .65);
+    --header-opacity: rgba(13, 13, 13, .65);
     --temp-corner: 15px;
     --corner: 15px;
 }

@@ -7,5 +7,5 @@
     position: fixed;
     
     border-radius: var(--temp-corner);
-    background-color: var(--body-opacity);
+    background-color: var(--temp-body-opacity);
   }

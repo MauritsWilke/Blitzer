@@ -2,9 +2,7 @@
 <html>
 
 <head>
-	<!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-	<!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
-	<meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'"> -->
+
 	<title>Blitzer</title>
 
 	<!-- main css -->
@@ -16,7 +14,8 @@
 	<!-- css for overlay -->
 	<link rel="stylesheet" href="../css/overlay/overlay.css">
 
-	<script src="../js/utils.js"></script>
+	<!-- css for settings -->
+	<link rel="stylesheet" href="../css/settings/settings.css">
 
 	<!-- for button controls on header -->
 	<script src="../js/header/controls.js"></script>
@@ -27,10 +26,10 @@
 		<div class="header-dropdown">
 			<img class="header-menuicon" src="../../assets/header-buttons/menu_bar.png">
 			<div class="header-dropdown-content">
-				<a href="./overlay.html" id="header-dropdown-overlay">Overlay</a>
-				<a href="./stat-search.html" id="header-dropdown-stat-search">Stat Search</a>
-				<a href="./tracking.html" id="header-dropdown-tracking">Tracking</a>
-				<a href="./settings.html" id="header-dropdown-settings">Settings</a>
+				<a id="header-dropdown-overlay">Overlay</a>
+				<a id="header-dropdown-statSearch">Stat Search</a>
+				<a id="header-dropdown-tracking">Tracking</a>
+				<a id="header-dropdown-settings">Settings</a>
 			</div>
 		</div>
 
@@ -53,9 +52,34 @@
 </header>
 
 <body>
-	<div class="overlay">
+<!-- overlay html -->
+	<div class="overlay panel">
 
 	</div>
+
+<!-- stat search html -->
+	<div class="statSearch panel hidden">
+
+	</div>
+
+<!-- tracking html -->
+	<div class="tracking panel hidden">
+
+	</div>
+
+<!-- settings html -->
+	<div class="settings panel hidden">
+
+        <div class="settings-sidebar">
+
+        </div>
+
+        <div class="settings-sidebody">
+
+        </div>
+
+	</div>
+
 </body>
 
 </html>
