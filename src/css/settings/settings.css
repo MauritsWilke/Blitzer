@@ -21,3 +21,29 @@
     border-radius: var(--temp-corner);
     background-color: var(--temp-body-opacity-lighter);
   }
+
+  .settings-sidebar span {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+    color: #B0B0B0;
+    font-family: Varela;
+    font-size: 18px;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .settings-sidebar span:hover {
+    color: #E3E3E3;
+  }
+
+  .settingTitle {
+    display: flex;
+    justify-content: center;
+    margin: 30px;
+    color: #FCFCFC;
+    font-family: Varela;
+    font-size: 25px;
+    cursor: pointer;
+    user-select: none;
+  }

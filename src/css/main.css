@@ -18,3 +18,7 @@
 .hidden {
     display: none;
 }
+
+.span-selected {
+    color: #FCFCFC !important;
+}
