@@ -22,3 +22,7 @@
 .span-selected {
     color: #FCFCFC !important;
 }
+
+:focus {
+    outline: none;
+  }

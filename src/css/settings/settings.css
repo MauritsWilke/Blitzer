@@ -1,3 +1,4 @@
+
 .settings-sidebar {
     top: 35px;
     left: 0;
@@ -18,6 +19,7 @@
     height: 100%;
     z-index: -2;
     position: fixed;
+    user-select: none;
     
     border-radius: var(--temp-corner);
     background-color: var(--temp-body-opacity-lighter);
@@ -61,3 +63,117 @@
     width: 100%;
     font-size: 12px;
   }
+
+.apiKeySubmitter {
+    margin-left: 35%;
+    margin-top: 10%;
+    width: 50%;
+    height: 15%;
+}
+
+.apiKeySubmitter fieldset, legend {
+    border-width: 2px;
+    padding-right: 4px;
+    font-family: Varela;
+    color: #FCFCFC;
+    font-size: 16px;
+}
+
+.apiKeySubmitter input[type=text] {
+    font-family: Varela;
+    color: #FCFCFC;
+    font-size: 16px;
+    background-color: transparent;
+    border: none;
+    width: 80%;
+    height: 100%;
+}
+
+.apiKeySubmitter input[type=text]:not(:placeholder-shown) {
+    filter: blur(10px);
+}
+
+.apiKeySubmitter input[type=text]:focus {
+    filter: blur(0px);
+}
+
+.apiKeySubmitter button {
+    font-family: Varela;
+    background: transparent;
+    color: #E3E3E3;
+    border-radius: 10px;
+    border: solid;
+    padding: 7px 15px 7px 15px;
+    border-width: 2px;
+    cursor: pointer;
+    float: right;
+    margin-right: 10px;
+    margin-top: -8px;
+    margin-bottom: -5px;
+}
+
+.apiKeySubmitter button:hover {
+    color: #FCFCFC;
+}
+
+.logSelector {
+    cursor: pointer;
+    position: relative;
+    margin-left: 35%;
+    margin-top: 3%;
+    width: 50%;
+    height: 15%;
+}
+
+.logSelector fieldset, legend {
+    border-width: 2px;
+    padding-right: 4px;
+    font-family: Varela;
+    color: #FCFCFC;
+    font-size: 16px;
+}
+
+.logSelector input[type=text] {
+    font-family: Varela;
+    color: #FCFCFC;
+    font-size: 16px;
+    background-color: transparent;
+    border: none;
+    width: 80%;
+    height: 100%;
+    cursor: pointer;
+}
+
+
+.logSelector-content {
+    z-index: 1;
+    display: none;
+    position: absolute;
+    width: 98%;
+    left: 1%;
+    margin-top: 12px;
+    background-color: #0e0e0e;
+    border-radius: 6px;
+    box-shadow: 0px 8px 7px 2px rgb(0 0 0 / 20%);
+
+    -webkit-app-region: no-drag;
+}
+
+.logSelector-content a {
+    color: #FCFCFC;
+    display: block;
+    padding: 12px 16px;
+    font-family: Varela;
+    text-shadow: 1px 1px 1px black;
+    border-radius: 6px;
+    text-decoration: none;
+}
+
+.logSelector-content a:hover {
+    background-color: #101010;
+}
+
+.logSelector:hover .logSelector-content {
+    display: block;
+    cursor: pointer;
+}

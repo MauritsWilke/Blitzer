@@ -23,6 +23,9 @@
 	<!-- switcher for settings -->
 	<script src="../js/settings/switcher.js"></script>
 
+	<!-- log selector for setting -->
+	<script src="../js/settings/logSelector.js"></script>
+
 
 	<!-- for button controls on header -->
 	<script src="../js/header/controls.js"></script>
@@ -93,7 +96,26 @@
         <div class="settings-sidebody">
 
 			<div class="general-setting setting-body">
-
+				<div class="apiKeySubmitter">
+					<fieldset>
+						<legend>API Key</legend>
+						<input type="text" spellcheck="false" maxLength="36" placeholder="Input API Key (/api new)" pattern="\S{8}-\S{4}-\S{4}-\S{4}-\S{12}">
+						<button>Save</button>
+					</fieldset>
+				</div>
+				<div class="logSelector">
+					<fieldset>
+						<legend>Select Log File</legend>
+						<input id="logInput" disabled type="text" spellcheck="false" placeholder="Hover Over to Select Log File">
+						<div class="logSelector-content">
+							<a id="logStandard">Standard (Vanilla/Forge/LabyMod)</a>
+							<a id="logBlc">Badlion Client</a>
+							<a id="logLc">Lunar Client</a>
+							<a id="logPl">PvPLounge</a>
+							<a id="logCustom">Custom</a>
+						</div>
+					</fieldset>
+				</div>
 			</div>
 
 			<div class="appearance-setting setting-body hidden">
