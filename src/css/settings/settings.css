@@ -5,6 +5,7 @@
     width: 20%;
     z-index: -1;
     position: fixed;
+    user-select: none;
     
     border-bottom-left-radius: var(--temp-corner);
     background-color: var(--temp-body-opacity);
@@ -30,11 +31,14 @@
     font-family: Varela;
     font-size: 18px;
     cursor: pointer;
-    user-select: none;
   }
 
   .settings-sidebar span:hover {
     color: #E3E3E3;
+  }
+
+  .settings-sidebar span:active {
+    color: #f1ecec;
   }
 
   .settingTitle {
@@ -44,6 +48,16 @@
     color: #FCFCFC;
     font-family: Varela;
     font-size: 25px;
-    cursor: pointer;
     user-select: none;
+  }
+
+  .versionTitle {
+    display: flex;
+    justify-content: center;
+    font-family: Varela;
+    color: #B0B0B0;
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    font-size: 12px;
   }

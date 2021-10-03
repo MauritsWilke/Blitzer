@@ -8,14 +8,21 @@
 	<!-- main css -->
 	<link rel="stylesheet" href="../css/main.css">
 
+
 	<!-- css for the header -->
 	<link rel="stylesheet" href="../css/header.css">
+
 
 	<!-- css for overlay -->
 	<link rel="stylesheet" href="../css/overlay/overlay.css">
 
+
 	<!-- css for settings -->
 	<link rel="stylesheet" href="../css/settings/settings.css">
+
+	<!-- switcher for settings -->
+	<script src="../js/settings/switcher.js"></script>
+
 
 	<!-- for button controls on header -->
 	<script src="../js/header/controls.js"></script>
@@ -73,13 +80,37 @@
         <div class="settings-sidebar">
 			<a class="settingTitle">Settings</a>
 
-			<span style="margin-top: 40px;" class="span-selected">asjek</span>
-			<span>dsajej</span>
-			<span>dsadwjej</span>
-			<span>de0oiqjwej</span>
+			<span id="general-button" style="margin-top: 40px;" class="span-selected setting-button">General</span>
+			<span class="setting-button" id="appearance-button">Appearance</span>
+			<span class="setting-button" id="indexColor-button">Index Colors</span>
+			<span class="setting-button" id="tableEditor-button">Table Editor</span>
+			<span class="setting-button" id="playerHighlight-button">Player Highlight</span>
+
+			<a class="versionTitle">v0.0.1 | © Blitzer Inc.</a>
+
         </div>
 
         <div class="settings-sidebody">
+
+			<div class="general-setting setting-body">
+
+			</div>
+
+			<div class="appearance-setting setting-body hidden">
+
+			</div>
+
+			<div class="indexColor-setting setting-body hidden">
+
+			</div>
+
+			<div class="tableEditor-setting setting-body hidden">
+
+			</div>
+
+			<div class="playerHighlight-setting setting-body hidden">
+
+			</div>
 
         </div>
 
