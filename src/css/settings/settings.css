@@ -177,3 +177,31 @@
     display: block;
     cursor: pointer;
 }
+
+.generalComp {
+    position: relative;
+    margin-left: 22%;
+    margin-top: 5%;
+    width: 100%;
+    height: 50%;
+}
+
+.generalCompBox {
+    color: #FCFCFC;
+    font-family: Varela;
+    font-size: 16px;
+    vertical-align: top;
+    display: inline-block;
+    text-align: center;
+    width: 25%;
+    margin-bottom: 8%;
+}
+
+.generalCompBox img {
+    width: 75px;
+    cursor: pointer;
+}
+
+.generalCompBox span {
+    cursor: pointer;
+}

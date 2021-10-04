@@ -26,3 +26,24 @@
 :focus {
     outline: none;
   }
+
+.tooltip1 {
+    display: inline;
+    position: relative;
+}
+
+.tooltip1:hover:after{
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: center;
+    justify-content: center;
+    background: #0e0e0e;
+    border-radius: 8px;
+    color: #FCFCFC;
+    content: attr(tooltip);
+    margin: -170px auto 0;
+    font-size: 16px;
+    padding: 13px;
+    width: 90%;
+    font-family: Varela;
+}
