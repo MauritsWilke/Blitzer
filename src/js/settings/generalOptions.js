@@ -1,37 +1,41 @@
 window.addEventListener("load", () => {
-    let boxs = document.querySelectorAll(".generalCompBoxImg")
+    let boxs = document.querySelectorAll(".generalCompButton")
+
+    boxs.forEach(box => {
+        let data = localStorage.read(box.id) ?? "disabled"
+        let button = document.querySelector(`#${box.id} button`)
+
+        if (data == "disabled") {
+            box.classList.add("disabled")
+            button.innerHTML = "Disabled"
+        } 
+        else {
+            box.classList.remove("disabled")
+            button.innerHTML = "Enabled"
+        }
+    })
+})
+
+
+window.addEventListener("load", () => {
+    let boxs = document.querySelectorAll(".generalCompButton")
 
     boxs.forEach(box => {
         box.addEventListener("click", e => {
             let id = e.target.id
-            let chosen = e.target.attributes[1].nodeValue
+            let button = document.querySelector(`#${id} button`)
 
-            console.log(e)
+            if (!box.classList.value.includes("disabled") == true) {
+                localStorage.write(id, "disabled")
+                button.innerHTML = "Disabled"
 
-            if (id == "guildTag") {
-                if (chosen == "false") box.src = "../../assets/settingIcons/guild_icon_green.png", document.getElementById(id).setAttribute("chosen", true)
-                else box.src = "../../assets/settingIcons/guild_icon.png", document.getElementById(id).setAttribute("chosen", false)
             }
-            if (id == "partyStats") {
-                if (chosen == "false") box.src = "../../assets/settingIcons/party_icon_green.png", document.getElementById(id).setAttribute("chosen", true)
-                else box.src = "../../assets/settingIcons/party_icon.png", document.getElementById(id).setAttribute("chosen", false)
+            else if (!box.classList.value.includes("disabled") == false) {
+                localStorage.write(id, "enabled")
+                button.innerHTML = "Enabled"
             }
-            if (id == "autoFw") {
-                if (chosen == "false") box.src = "../../assets/settingIcons/autoFw_icon_green.png", document.getElementById(id).setAttribute("chosen", true)
-                else box.src = "../../assets/settingIcons/autoFw_icon.png", document.getElementById(id).setAttribute("chosen", false)
-            }
-            if (id == "autoClear") {
-                if (chosen == "false") box.src = "../../assets/settingIcons/clearOverlay_icon_green.png", document.getElementById(id).setAttribute("chosen", true)
-                else box.src = "../../assets/settingIcons/clearOverlay_icon.png", document.getElementById(id).setAttribute("chosen", false)
-            }
-            if (id == "keybindShow") {
-                if (chosen == "false") box.src = "../../assets/settingIcons/keybindShow_icon_green.png", document.getElementById(id).setAttribute("chosen", true)
-                else box.src = "../../assets/settingIcons/keybindShow_icon.png", document.getElementById(id).setAttribute("chosen", false)
-            }
-            if (id == "saveWindow") {
-                if (chosen == "false") box.src = "../../assets/settingIcons/saveWindow_icon_green.png", document.getElementById(id).setAttribute("chosen", true)
-                else box.src = "../../assets/settingIcons/saveWindow_icon.png", document.getElementById(id).setAttribute("chosen", false)
-            }
+
+            box.classList.toggle("disabled")
         })
     })
 })

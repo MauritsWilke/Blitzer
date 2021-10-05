@@ -29,6 +29,9 @@
 	<!-- options selector for setting -->
 	<script src="../js/settings/generalOptions.js"></script>
 
+	<!-- options selector for setting -->
+	<script src="../js/settings/apiSubmit.js"></script>
+
 
 	<!-- for button controls on header -->
 	<script src="../js/header/controls.js"></script>
@@ -83,6 +86,8 @@
 <!-- settings html -->
 	<div class="settings panel hidden">
 
+		<div class="headerColor"></div>
+
         <div class="settings-sidebar">
 			<a class="settingTitle">Settings</a>
 
@@ -102,8 +107,8 @@
 				<div class="apiKeySubmitter">
 					<fieldset>
 						<legend>API Key</legend>
-						<input type="text" spellcheck="false" maxLength="36" placeholder="Input API Key (/api new)" pattern="\S{8}-\S{4}-\S{4}-\S{4}-\S{12}">
-						<button>Save</button>
+						<input id="apiInput" type="text" spellcheck="false" maxLength="36" placeholder="Input API Key (/api new)" pattern="\S{8}-\S{4}-\S{4}-\S{4}-\S{12}">
+						<button id="apiSave">Save</button>
 					</fieldset>
 				</div>
 				<div class="logSelector">
@@ -122,30 +127,48 @@
 				<div class="generalComp">
 					<div>
 							<div class="generalCompBox">
-								<img id="guildTag" chosen="false" class="generalCompBoxImg" src="../../assets/settingIcons/guild_icon.png"><br>
-								<span class="tooltip1" tooltip="Adds the guild tag to players (will reduce performance)">Guild Tag</span>
+								<img src="../../assets/settingIcons/guild_icon.png"><br>
+								<span title="Adds the guild tag to players (will reduce performance)">Guild Tag</span>
+								<div id="guildTag" class="generalCompButton disabled enabled">
+									<button id="guildTag">Disabled</button>
+								</div>
 							</div>
 							<div class="generalCompBox">
-								<img id="partyStats" chosen="false" class="generalCompBoxImg" src="../../assets/settingIcons/party_icon.png"><br>
-								<span class="tooltip1" tooltip="Will show who is in a party">Party Stats</span>
+								<img src="../../assets/settingIcons/party_icon.png"><br>
+								<span title="Will show who is in a party">Party Stats</span>
+								<div id="partyStats" class="generalCompButton disabled enabled">
+									<button id="partyStats">Disabled</button>
+								</div>
 							</div>
 							<div class="generalCompBox">
-								<img id="autoFw" chosen="false" class="generalCompBoxImg" src="../../assets/settingIcons/autoFw_icon.png"><br>
-								<span class="tooltip1" tooltip="Will auto type /fw [tab] before the game starts">Auto fw</span>
+								<img src="../../assets/settingIcons/autoFw_icon.png"><br>
+								<span title="Will auto type /fw [tab] before the game starts">Auto fw</span>
+								<div id="autoFw" class="generalCompButton disabled enabled">
+									<button id="autoFw">Disabled</button>
+								</div>
 							</div>
 					</div>
 					<div>
 						<div class="generalCompBox">
-							<img id="autoClear" chosen="false" class="generalCompBoxImg" src="../../assets/settingIcons/clearOverlay_icon.png"><br>
-							<span class="tooltip1" tooltip="Will auto clear the overlay when the game starts">Auto Clear</span>
+							<img src="../../assets/settingIcons/clearOverlay_icon.png"><br>
+							<span title="Will auto clear the overlay when the game starts">Auto Clear</span>
+							<div id="autoClear" class="generalCompButton disabled enabled">
+								<button id="autoClear">Disabled</button>
+							</div>
 						</div>
 						<div class="generalCompBox">
-							<img id="keybindShow" chosen="false" class="generalCompBoxImg" src="../../assets/settingIcons/keybindShow_icon.png"><br>
-							<span class="tooltip1" tooltip="pressing tab will display the overlay">Tab to Show</span>
+							<img src="../../assets/settingIcons/tabShow_icon.png"><br>
+							<span title="pressing tab will display the overlay">Tab to Show</span>
+							<div id="tabShow" class="generalCompButton disabled enabled">
+								<button id="tabShow">Disabled</button>
+							</div>
 						</div>
 						<div class="generalCompBox">
-							<img id="saveWindow" chosen="false" class="generalCompBoxImg" src="../../assets/settingIcons/saveWindow_icon.png"><br>
-							<span class="tooltip1" tooltip="Save the window size on close">Save Window Size</span>
+							<img src="../../assets/settingIcons/saveWindow_icon.png"><br>
+							<span title="Save the window size on close">Save Window Size</span>
+							<div id="saveWindow" class="generalCompButton disabled enabled">
+								<button id="saveWindow">Disabled</button>
+							</div>
 						</div>
 					</div>
 				</div>

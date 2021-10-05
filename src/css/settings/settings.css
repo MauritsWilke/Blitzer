@@ -1,4 +1,17 @@
 
+.headerColor {
+    top: 0;
+    left: 0;
+    height: 35px;
+    background-color: var(--temp-body-opacity-lighter);
+    width: 100%;
+    position: fixed;
+    z-index: -2;
+    
+    border-top-left-radius: var(--temp-corner);
+    border-top-right-radius: var(--temp-corner);
+}
+
 .settings-sidebar {
     top: 35px;
     left: 0;
@@ -13,15 +26,18 @@
   }
 
 .settings-sidebody {
-    top: 0;
+    top: 35px;
     left: 0;
     width: 100%;
-    height: 100%;
     z-index: -2;
     position: fixed;
     user-select: none;
-    
-    border-radius: var(--temp-corner);
+    bottom: 0;
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+    border-bottom-left-radius: var(--temp-corner);
+    border-bottom-right-radius: var(--temp-corner);
     background-color: var(--temp-body-opacity-lighter);
   }
 
@@ -178,9 +194,10 @@
     cursor: pointer;
 }
 
+
 .generalComp {
     position: relative;
-    margin-left: 22%;
+    margin-left: 27%;
     margin-top: 5%;
     width: 100%;
     height: 50%;
@@ -189,19 +206,49 @@
 .generalCompBox {
     color: #FCFCFC;
     font-family: Varela;
-    font-size: 16px;
+    font-size: 15px;
     vertical-align: top;
     display: inline-block;
     text-align: center;
-    width: 25%;
-    margin-bottom: 8%;
+    width: 17%;
+    margin-bottom: 4%;
+    padding-top: 2.5%;
+    border: 2px solid #C0C0C0;
+    margin-right: 7%;
+    background-color: rgb(16 16 16 / 53%);
+    border-radius: 20px;
+    box-shadow: 2px 2px 4px 2px #0000003b;
+    overflow: hidden;
+    height: 10%;
 }
 
 .generalCompBox img {
-    width: 75px;
-    cursor: pointer;
+    width: 65px;
+    user-select: none;
+    
+    -webkit-user-drag: none;
 }
 
 .generalCompBox span {
+    cursor: help;
+    text-shadow: 1px 1px 1px black;
+}
+
+.generalCompButton {
+    border-top: 2px solid #C0C0C0;
+    width: 100%;
+    padding-bottom: 4.5%;
+    padding-top: 4.5%;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+.generalCompButton button {
+    color: #FCFCFC;
+    font-family: Varela;
+    border: none;
+    background-color: transparent;
+    font-size: 15px;
+    text-shadow: 1px 1px 1px black;
     cursor: pointer;
 }

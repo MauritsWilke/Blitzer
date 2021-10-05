@@ -47,3 +47,49 @@
     width: 90%;
     font-family: Varela;
 }
+
+.enabled {
+    background-color: #336C28;
+}
+
+.enabled:hover {
+    background-color: #336c32;
+}
+
+.disabled {
+    background-color: #85120E;
+}
+
+.disabled:hover {
+    background-color: #85120f;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #191919;
+
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: var(--temp-corner);
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #0F0F0F;
+
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: var(--temp-corner);
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #0D0D0D;
+    cursor: pointer;
+  }
