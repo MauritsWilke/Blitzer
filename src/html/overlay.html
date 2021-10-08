@@ -24,13 +24,16 @@
 	<script src="../js/settings/switcher.js"></script>
 
 	<!-- log selector for setting -->
-	<script src="../js/settings/logSelector.js"></script>
+	<script src="../js/settings/selectors.js"></script>
 
 	<!-- options selector for setting -->
 	<script src="../js/settings/generalOptions.js"></script>
 
-	<!-- options selector for setting -->
+	<!-- api submitter for setting -->
 	<script src="../js/settings/apiSubmit.js"></script>
+
+	<!-- sliders for setting -->
+	<script src="../js/settings/sliders.js"></script>
 
 
 	<!-- for button controls on header -->
@@ -69,7 +72,7 @@
 
 <body>
 <!-- overlay html -->
-	<div class="overlay panel">
+	<div class="overlay panel hidden">
 
 	</div>
 
@@ -84,7 +87,7 @@
 	</div>
 
 <!-- settings html -->
-	<div class="settings panel hidden">
+	<div class="settings panel">
 
 		<div class="headerColor"></div>
 
@@ -175,7 +178,38 @@
 			</div>
 
 			<div class="appearance-setting setting-body hidden">
-
+				<div class="opacitySelector">
+					<fieldset>
+						<legend id="opacityText">Background Opacity: 70%</legend>
+						<input id="opacitySelector" step="1" class="slider" max="100" value="70" type="range">
+					</fieldset>
+				</div>
+				<div class="cornerSelector">
+					<fieldset>
+						<legend id="cornerText">Corner Radius: 15px</legend>
+						<input id="cornerSelector" step="1" class="slider" max="15" value="15" type="range">
+					</fieldset>
+				</div>
+				<div class="windowSelector">
+					<fieldset>
+						<legend>Window Option Style</legend>
+						<input id="windowInput" disabled type="text" spellcheck="false">
+						<div class="windowSelector-content">
+							<a id="windowStyle">Windows</a>
+							<a id="macStyle">Mac</a>
+						</div>
+					</fieldset>
+				</div>
+				<div class="fontSelector">
+					<fieldset>
+						<legend>Overlay Font Style</legend>
+						<input id="fontInput" disabled type="text" spellcheck="false" placeholder="Hover Over to Select a Font Style">
+						<div class="fontSelector-content">
+							<a id="minecraftStyle">Minecraft</a>
+							<a id="normalStyle">Normal</a>
+						</div>
+					</fieldset>
+				</div>
 			</div>
 
 			<div class="indexColor-setting setting-body hidden">

@@ -252,3 +252,177 @@
     text-shadow: 1px 1px 1px black;
     cursor: pointer;
 }
+
+.opacitySelector {
+    cursor: pointer;
+    position: relative;
+    margin-left: 35%;
+    margin-top: 5.5%;
+    width: 50%;
+    height: 15%;
+}
+
+.opacitySelector fieldset, legend {
+    border-width: 2px;
+    padding-right: 4px;
+    font-family: Varela;
+    color: #FCFCFC;
+    font-size: 16px;
+}
+
+.opacitySelector input[type=range] {
+    font-family: Varela;
+    color: #FCFCFC;
+    border: none;
+    width: 98%;
+    cursor: pointer;
+}
+
+.cornerSelector {
+    cursor: pointer;
+    position: relative;
+    margin-left: 35%;
+    margin-top: 5.5%;
+    width: 50%;
+    height: 15%;
+}
+
+.cornerSelector fieldset, legend {
+    border-width: 2px;
+    padding-right: 4px;
+    font-family: Varela;
+    color: #FCFCFC;
+    font-size: 16px;
+}
+
+.cornerSelector input[type=range] {
+    font-family: Varela;
+    color: #FCFCFC;
+    border: none;
+    width: 98%;
+    cursor: pointer;
+}
+
+.windowSelector {
+    cursor: pointer;
+    position: relative;
+    margin-left: 35%;
+    margin-top: 5.5%;
+    width: 50%;
+    height: 15%;
+}
+
+.windowSelector fieldset, legend {
+    border-width: 2px;
+    padding-right: 4px;
+    font-family: Varela;
+    color: #FCFCFC;
+    font-size: 16px;
+}
+
+.windowSelector input[type=text] {
+    font-family: Varela;
+    color: #FCFCFC;
+    font-size: 16px;
+    background-color: transparent;
+    border: none;
+    width: 80%;
+    height: 100%;
+    cursor: pointer;
+}
+
+
+.windowSelector-content {
+    z-index: 1;
+    display: none;
+    position: absolute;
+    width: 98%;
+    left: 1%;
+    margin-top: 12px;
+    background-color: #0e0e0e;
+    border-radius: 6px;
+    box-shadow: 0px 8px 7px 2px rgb(0 0 0 / 20%);
+
+    -webkit-app-region: no-drag;
+}
+
+.windowSelector-content a {
+    color: #FCFCFC;
+    display: block;
+    padding: 12px 16px;
+    font-family: Varela;
+    text-shadow: 1px 1px 1px black;
+    border-radius: 6px;
+    text-decoration: none;
+}
+
+.windowSelector-content a:hover {
+    background-color: #101010;
+}
+
+.windowSelector:hover .windowSelector-content {
+    display: block;
+    cursor: pointer;
+}
+
+.fontSelector {
+    cursor: pointer;
+    position: relative;
+    margin-left: 35%;
+    margin-top: 5.5%;
+    width: 50%;
+    height: 15%;
+}
+
+.fontSelector fieldset, legend {
+    border-width: 2px;
+    padding-right: 4px;
+    font-family: Varela;
+    color: #FCFCFC;
+    font-size: 16px;
+}
+
+.fontSelector input[type=text] {
+    font-family: Varela;
+    color: #FCFCFC;
+    font-size: 16px;
+    background-color: transparent;
+    border: none;
+    width: 80%;
+    height: 100%;
+    cursor: pointer;
+}
+
+
+.fontSelector-content {
+    z-index: 1;
+    display: none;
+    position: absolute;
+    width: 98%;
+    left: 1%;
+    margin-top: 12px;
+    background-color: #0e0e0e;
+    border-radius: 6px;
+    box-shadow: 0px 8px 7px 2px rgb(0 0 0 / 20%);
+
+    -webkit-app-region: no-drag;
+}
+
+.fontSelector-content a {
+    color: #FCFCFC;
+    display: block;
+    padding: 12px 16px;
+    font-family: Varela;
+    text-shadow: 1px 1px 1px black;
+    border-radius: 6px;
+    text-decoration: none;
+}
+
+.fontSelector-content a:hover {
+    background-color: #101010;
+}
+
+.fontSelector:hover .fontSelector-content {
+    display: block;
+    cursor: pointer;
+}
