@@ -123,3 +123,10 @@
     background: #E3E3E3;
     cursor: pointer;
   }
+
+  /* get rid of ugly button for type number inputs */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+   -webkit-appearance: none;
+   margin: 0;
+}

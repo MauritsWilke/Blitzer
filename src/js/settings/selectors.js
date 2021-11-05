@@ -25,7 +25,7 @@ window.addEventListener("load", () => {
     let input = document.getElementById("windowInput")
     let options = document.querySelectorAll(".windowSelector-content a")
 
-    let data = localStorage.read("windowStyle") ?? "Windows"; localStorage.write("windowStyle", "windowsStyle")
+    let data = localStorage.read("windowStyle") ?? "Windows"; localStorage.write("windowStyle", "Windows")
 
     input.value = data
 
