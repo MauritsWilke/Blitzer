@@ -29,6 +29,7 @@
 		"electron-store": "^6.0.1"
 	},
 	"dependencies": {
-		"@simonwep/pickr": "^1.8.2"
+		"@simonwep/pickr": "^1.8.2",
+		"tippy.js": "^6.3.5"
 	}
 }

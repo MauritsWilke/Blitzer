@@ -130,3 +130,13 @@
    -webkit-appearance: none;
    margin: 0;
 }
+
+.tippy-box[data-theme~='blitzer'] {
+  color: #FCFCFC;
+  font-family: Varela;
+  text-align: center;
+  padding: 5px 7px 5px 7px;
+  border-radius: 8px;
+  background-color: #0e0e0e;
+  box-shadow: 2px 2px 4px 2px #0000003b;
+}

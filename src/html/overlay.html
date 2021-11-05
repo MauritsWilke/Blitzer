@@ -27,6 +27,9 @@
 	<!-- js for color pickr -->
 	<script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
 
+	<!-- js for tooltip -->
+	<script src="../js/main/tooltip.js"></script>
+
 	<!-- switcher for settings -->
 	<script src="../js/settings/switcher.js"></script>
 
@@ -141,21 +144,21 @@
 					<div>
 							<div class="generalCompBox">
 								<img src="../../assets/settingIcons/guild_icon.png"><br>
-								<span title="Adds the guild tag to players (will reduce performance)">Guild Tag</span>
+								<span data-tippy-content="Adds the guild tag to players (will reduce performance)">Guild Tag</span>
 								<div id="guildTag" class="generalCompButton disabled enabled">
 									<button id="guildTag">Disabled</button>
 								</div>
 							</div>
 							<div class="generalCompBox">
 								<img src="../../assets/settingIcons/party_icon.png"><br>
-								<span title="Will show who is in a party">Party Stats</span>
+								<span data-tippy-content="Will show who is in a party">Party Stats</span>
 								<div id="partyStats" class="generalCompButton disabled enabled">
 									<button id="partyStats">Disabled</button>
 								</div>
 							</div>
 							<div class="generalCompBox">
 								<img src="../../assets/settingIcons/autoFw_icon.png"><br>
-								<span title="Will auto type /fw [tab] before the game starts">Auto fw</span>
+								<span data-tippy-content="Will auto type /fw [tab] before the game starts">Auto fw</span>
 								<div id="autoFw" class="generalCompButton disabled enabled">
 									<button id="autoFw">Disabled</button>
 								</div>
@@ -164,21 +167,21 @@
 					<div>
 						<div class="generalCompBox">
 							<img src="../../assets/settingIcons/clearOverlay_icon.png"><br>
-							<span title="Will auto clear the overlay when the game starts">Auto Clear</span>
+							<span data-tippy-content="Will auto clear the overlay when the game starts">Auto Clear</span>
 							<div id="autoClear" class="generalCompButton disabled enabled">
 								<button id="autoClear">Disabled</button>
 							</div>
 						</div>
 						<div class="generalCompBox">
 							<img src="../../assets/settingIcons/tabShow_icon.png"><br>
-							<span title="pressing tab will display the overlay">Tab to Show</span>
+							<span data-tippy-content="pressing tab will display the overlay">Tab to Show</span>
 							<div id="tabShow" class="generalCompButton disabled enabled">
 								<button id="tabShow">Disabled</button>
 							</div>
 						</div>
 						<div class="generalCompBox">
 							<img src="../../assets/settingIcons/saveWindow_icon.png"><br>
-							<span title="Save the window size on close">Save Window Size</span>
+							<span data-tippy-content="Save the window size on close">Save Window Size</span>
 							<div id="saveWindow" class="generalCompButton disabled enabled">
 								<button id="saveWindow">Disabled</button>
 							</div>
@@ -310,7 +313,7 @@
 
 					<div class="indexAdd">
 
-						<button class="indexAddButton">&#43</button>
+						<button data-tippy-content="Click to add a index color" id="tip" class="indexAddButton">&#43</button>
 
 					</div>
 

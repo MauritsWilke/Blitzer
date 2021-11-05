@@ -1,6 +1,7 @@
 window.addEventListener("load", () => {
     let input = document.getElementById("logInput")
     let options = document.querySelectorAll(".logSelector-content a")
+    let content = document.querySelector(".logSelector-content")
 
     let data = localStorage.read("client") ?? ""
 
@@ -11,6 +12,8 @@ window.addEventListener("load", () => {
             let text = e.target.innerHTML
 
             localStorage.write("client", text)
+
+            content.classList.toggle("hidden")
 
             input.value = text
             
