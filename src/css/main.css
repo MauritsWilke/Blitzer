@@ -19,6 +19,10 @@
     display: none;
 }
 
+.force-hidden {
+  display: none !important;
+}
+
 .span-selected {
     color: #FCFCFC !important;
 }

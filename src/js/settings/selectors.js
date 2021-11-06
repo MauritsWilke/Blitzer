@@ -8,12 +8,10 @@ window.addEventListener("load", () => {
     input.value = data
 
     options.forEach(option => {
-        option.addEventListener("click", e => {
+        option.addEventListener("click", async e => {
             let text = e.target.innerHTML
 
             localStorage.write("client", text)
-
-            content.classList.toggle("hidden")
 
             input.value = text
             
