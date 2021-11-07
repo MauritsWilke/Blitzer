@@ -30,6 +30,9 @@
 	<!-- js for tooltip -->
 	<script src="../js/main/tooltip.js"></script>
 
+	<!-- js for table editor -->
+	<script src="../js/settings/tableEditor.js"></script>
+
 	<!-- switcher for settings -->
 	<script src="../js/settings/switcher.js"></script>
 
@@ -157,10 +160,10 @@
 								</div>
 							</div>
 							<div class="generalCompBox">
-								<img src="../../assets/settingIcons/autoFw_icon.png"><br>
-								<span data-tippy-content="Will auto type /fw [tab] before the game starts">Auto fw</span>
-								<div id="autoFw" class="generalCompButton disabled enabled">
-									<button id="autoFw">Disabled</button>
+								<img src="../../assets/settingIcons/rankTag_icon.png"><br>
+								<span data-tippy-content="Adds the players rank tag to their IGN">Rank Tag</span>
+								<div id="rankTag" class="generalCompButton disabled enabled">
+									<button id="rankTag">Disabled</button>
 								</div>
 							</div>
 					</div>
@@ -180,10 +183,10 @@
 							</div>
 						</div>
 						<div class="generalCompBox">
-							<img src="../../assets/settingIcons/saveWindow_icon.png"><br>
-							<span data-tippy-content="Save the window size on close">Save Window Size</span>
-							<div id="saveWindow" class="generalCompButton disabled enabled">
-								<button id="saveWindow">Disabled</button>
+							<img src="../../assets/settingIcons/autoFw_icon.png"><br>
+							<span data-tippy-content="Will auto type /fw [tab] before the game starts">Auto fw</span>
+							<div id="autoFw" class="generalCompButton disabled enabled">
+								<button id="autoFw">Disabled</button>
 							</div>
 						</div>
 					</div>
@@ -322,6 +325,27 @@
 			</div>
 
 			<div class="tableEditor-setting setting-body hidden">
+
+				<div class="tableSelector">
+					<fieldset>
+						<legend>Cloumn 1</legend>
+						<input id="CloumnInput1" disabled type="text" spellcheck="false">
+						<div>
+							<a>Tag</a>
+							<a>Head</a>
+							<a>Name</a>
+							<a></a>
+							<a></a>
+							<a></a>
+							<a></a>
+							<a></a>
+							<a></a>
+							<a></a>
+							<a></a>
+							<a></a>
+						</div>
+					</fieldset>
+				</div>
 
 			</div>
 
