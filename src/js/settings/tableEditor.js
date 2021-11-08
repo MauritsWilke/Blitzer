@@ -1,5 +1,6 @@
 const defaultValue = require('../js/utils/json/defaultTable.json')
 
+// loop to create the selectors
 window.addEventListener("load", () => {
 
     function createSelector (number, value) {
@@ -36,7 +37,46 @@ window.addEventListener("load", () => {
         let body = document.getElementById("tableEditorBody")
 
         body.innerHTML += html
-
-
     }
+})
+
+// saves localstorage data if never loaded before
+window.addEventListener("load", () => {
+    let selectors = document.querySelectorAll(".tableSelector input")
+
+    let customTable = []
+
+    selectors.forEach(selector => {
+        let id = selector.id
+        let value = selector.value
+
+        customTable.push({"id": id, "value": value})
+    })
+
+    localStorage.read("customTable") ?? localStorage.write("customTable", customTable)
+
+})
+
+// saves new table data
+window.addEventListener("load", () => {
+    let selectors = document.querySelectorAll(".tableSelector-content a")
+
+    selectors.forEach(selector => {
+
+        selector.addEventListener("click", e => {
+            let table = localStorage.read("customTable")
+
+            let id = e.path[2].children[1].id
+            let newValue = e.srcElement.innerHTML
+            let index = +id.replace(/\D/g, '')
+
+            let input = document.getElementById(id)
+
+            input.value = newValue
+            
+            table[index-1] = {"id": id, "value": newValue}
+
+            localStorage.write("customTable", table)
+        })
+    })
 })
