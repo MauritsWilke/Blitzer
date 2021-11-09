@@ -559,13 +559,22 @@
     border-radius: 5px;
 }
 
+.tableEditor-setting {
+    height: 900px;
+}
+
+#tableEditorBody {
+    margin-left: 10%;
+    margin-top: 3%;
+}
+
 .tableSelector {
     cursor: pointer;
     position: relative;
-    margin-left: 35%;
+    margin-left: 16%;
     margin-top: 5.5%;
-    width: 50%;
-    height: 15%;
+    width: 32%;
+    display: inline-block;
 }
 
 .tableSelector fieldset, legend {

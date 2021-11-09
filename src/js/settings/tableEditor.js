@@ -80,3 +80,15 @@ window.addEventListener("load", () => {
         })
     })
 })
+
+// loads the saved data into the selectors
+window.addEventListener("load", () => {
+    localStorage.read("customTable").forEach(item => {
+        let id = item.id
+        let value = item.value
+
+        let input = document.getElementById(id)
+
+        input.value = value
+    })
+})
