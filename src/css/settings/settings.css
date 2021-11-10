@@ -619,6 +619,7 @@
     text-shadow: 1px 1px 1px black;
     border-radius: 6px;
     text-decoration: none;
+    font-size: 14px;
 }
 
 .tableSelector-content a:hover {

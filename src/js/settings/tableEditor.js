@@ -11,18 +11,17 @@ window.addEventListener("load", () => {
                 <legend>Cloumn ${number}</legend>
                 <input id="CloumnInput${number}" disabled type="text" spellcheck="false" value="${value}">
                 <div class="tableSelector-content">
-                    <a>Tag</a>
                     <a>Head</a>
                     <a>Name</a>
-                    <a></a>
-                    <a></a>
-                    <a></a>
-                    <a></a>
-                    <a></a>
-                    <a></a>
-                    <a></a>
-                    <a></a>
-                    <a></a>
+                    <a>Kills</a>
+                    <a>Deaths</a>
+                    <a>Wins</a>
+                    <a>Losses</a>
+                    <a>WLR</a>
+                    <a>KDR</a>
+                    <a>K/G</a>
+                    <a>Kit</a>
+                    <a>Level</a>
                 </div>
             </fieldset>
         </div>`
