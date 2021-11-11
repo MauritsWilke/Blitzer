@@ -8,7 +8,7 @@ window.addEventListener("load", () => {
         let html = `
         <div class="tableSelector">
             <fieldset>
-                <legend>Cloumn ${number}</legend>
+                <legend>Column ${number}</legend>
                 <input id="CloumnInput${number}" disabled type="text" spellcheck="false" value="${value}">
                 <div class="tableSelector-content">
                     <a>Head</a>
