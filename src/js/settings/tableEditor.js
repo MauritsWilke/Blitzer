@@ -11,6 +11,7 @@ window.addEventListener("load", () => {
                 <legend>Column ${number}</legend>
                 <input id="CloumnInput${number}" disabled type="text" spellcheck="false" value="${value}">
                 <div class="tableSelector-content">
+                    <a>None</a>
                     <a>Head</a>
                     <a>Name</a>
                     <a>Kills</a>
@@ -52,7 +53,7 @@ window.addEventListener("load", () => {
         customTable.push({"id": id, "value": value})
     })
 
-    localStorage.read("customTable") ?? localStorage.write("customTable", customTable)
+    localStorage.read("customTable") ?? localStorage.write("customTable", customTable), previewTable()
 
 })
 
@@ -76,6 +77,8 @@ window.addEventListener("load", () => {
             table[index-1] = {"id": id, "value": newValue}
 
             localStorage.write("customTable", table)
+
+            previewTable()
         })
     })
 })
@@ -90,4 +93,23 @@ window.addEventListener("load", () => {
 
         input.value = value
     })
+
+    previewTable()
 })
+
+function previewTable () {
+    let table = document.querySelector(".customTablePreview tr")
+
+    let cells = "<th></th>"
+
+
+    localStorage.read("customTable").forEach((item, index) => {
+
+        if (item.value == "None") return
+        
+        else cells += `<th>${item.value}</th>`
+        
+    })
+
+    table.innerHTML = cells
+}

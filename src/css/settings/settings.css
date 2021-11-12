@@ -565,7 +565,6 @@
 
 #tableEditorBody {
     margin-left: 10%;
-    margin-top: 3%;
 }
 
 .tableSelector {
@@ -629,4 +628,32 @@
 .tableSelector:hover .tableSelector-content {
     display: block;
     cursor: pointer;
+}
+
+.tablePreview {
+    margin-top: 3%;
+    margin-left: 25%;
+
+    width: 70%;
+    height: 100px;
+
+    border-radius: 15px;
+
+    background-color: rgb(16 16 16 / 53%);
+    box-shadow: 2px 2px 4px 2px #0000003b;
+}
+
+.customTablePreview {
+    
+}
+
+.customTablePreview th {
+    color: #B0B0B0;
+    text-shadow: 1px 1px 1px black;
+
+    font-family: Varela;
+    font-size: 12px;
+
+    width: 1%;
+    padding-top: 10px;
 }
