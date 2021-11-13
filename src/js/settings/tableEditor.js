@@ -1,4 +1,6 @@
 const defaultValue = require('../js/utils/json/defaultTable.json')
+const statPreview = require('../js/utils/json/statPreview.json')
+
 
 // loop to create the selectors
 window.addEventListener("load", () => {
@@ -18,6 +20,7 @@ window.addEventListener("load", () => {
                     <a>Deaths</a>
                     <a>Wins</a>
                     <a>Losses</a>
+                    <a>Games</a>
                     <a>WLR</a>
                     <a>KDR</a>
                     <a>K/G</a>
@@ -98,18 +101,58 @@ window.addEventListener("load", () => {
 })
 
 function previewTable () {
-    let table = document.querySelector(".customTablePreview tr")
+    function previewHeader () {
+        let table = document.getElementById("headingPreview")
 
-    let cells = "<th></th>"
+        let cells = "<th></th>"
+    
+    
+        localStorage.read("customTable").forEach((item, index) => {
+    
+            if (item.value == "None") return
+            
+            else cells += `<th>${item.value}</th>`
+            
+        })
+    
+        table.innerHTML = cells
+    }
 
+    function previewStats () {
+        let headingTable = document.querySelectorAll("#headingPreview th")
+        let table = document.getElementById("statPreview")
 
-    localStorage.read("customTable").forEach((item, index) => {
+        let cells = ""
 
-        if (item.value == "None") return
-        
-        else cells += `<th>${item.value}</th>`
-        
+        headingTable.forEach(cell => {
+            let text = cell.innerText.toLowerCase()
+
+            if (text == "head") {
+                cells += `<td><img src=${statPreview[text]}></td>`
+            }
+
+            else {
+                cells += `<td>${statPreview[text] ?? ""}</td>`
+            }
+        })
+
+        table.innerHTML = cells
+    }
+
+    function previewTagLoader () {
+        let cell = document.querySelector("#statPreview td")
+
+        let tag = `<i data-tippy-content="Partied" class='fas'>&#xf0c0;</i>`
+
+        cell.innerHTML = tag
+    }
+
+    previewHeader()
+    previewStats()
+    previewTagLoader()
+
+    tippy('.fas', {
+        animation: "shift-away",
+        theme: 'blitzer',
     })
-
-    table.innerHTML = cells
 }
