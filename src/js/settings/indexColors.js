@@ -72,6 +72,7 @@ window.addEventListener("load", () => {
                     preview: true,
                     hue: true,
                     interaction: {
+                        hex: false,
                         input: true,
                         cancel: true,
                         clear: false,

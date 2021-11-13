@@ -1,3 +1,4 @@
+const { mcParse } = require('../js/utils/colorParser')
 const defaultValue = require('../js/utils/json/defaultTable.json')
 const statPreview = require('../js/utils/json/statPreview.json')
 
@@ -107,7 +108,7 @@ function previewTable () {
         let cells = "<th></th>"
     
     
-        localStorage.read("customTable").forEach((item, index) => {
+        localStorage.read("customTable").forEach(item => {
     
             if (item.value == "None") return
             
@@ -132,7 +133,7 @@ function previewTable () {
             }
 
             else {
-                cells += `<td>${statPreview[text] ?? ""}</td>`
+                cells += `<td>${mcParse(statPreview[text]) ?? ""}</td>`
             }
         })
 
@@ -142,7 +143,7 @@ function previewTable () {
     function previewTagLoader () {
         let cell = document.querySelector("#statPreview td")
 
-        let tag = `<i data-tippy-content="Partied" class='fas'>&#xf0c0;</i>`
+        let tag = `<i style="color: hsl(240, 95%, 67%); text-shadow: 2px 2px hsl(240, 95%, 10%);" data-tippy-content="Partied" class='fas'>&#xf0c0;</i>`
 
         cell.innerHTML = tag
     }
