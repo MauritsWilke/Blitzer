@@ -27,6 +27,7 @@ window.addEventListener("load", () => {
                     <a>K/G</a>
                     <a>Kit</a>
                     <a>Level</a>
+                    <a>X's</a>
                 </div>
             </fieldset>
         </div>`

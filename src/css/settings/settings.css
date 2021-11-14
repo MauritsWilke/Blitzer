@@ -677,3 +677,26 @@
 
     cursor: pointer;
 }
+
+.playerHighlightButton {
+    margin-left: 50%;
+}
+
+.playerHighlightButton button {
+    margin-top: 35px;
+    margin-bottom: 35px;
+    padding: 10px 80px 10px 80px;
+    color: #C0C0C0;
+    font-family: Varela;
+    font-size: 26px;
+    border-radius: 15px;
+    cursor: pointer;
+    border: 2px solid #C0C0C0;
+    background-color: rgb(16 16 16 / 53%);
+    box-shadow: 2px 2px 4px 2px #0000003b;
+}
+
+.playerHighlightButton button:hover {
+    border: 2px solid #FCFCFC;
+    color: #FCFCFC;
+}
