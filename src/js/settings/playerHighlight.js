@@ -2,9 +2,7 @@ window.addEventListener("load", () => {
     let button = document.querySelector(".playerHighlightButton")
 
     button.addEventListener("click", async () => {
-        let player = await highlightPromt()
-
-        console.log(player)
+        highlightPromt()
     })
 })
 
@@ -13,6 +11,8 @@ window.addEventListener("load", () => {
 // }
 
 function highlightPromt () {
+    let body = document.querySelector(".highlightBodyPromt")
+
     let html = `
         <div class="highlightPromt">
             <div class="highlightPromtInputDiv">
@@ -29,5 +29,30 @@ function highlightPromt () {
         </div>
     `
 
-    document.querySelector(".highlightBodyPromt").innerHTML = html
+    body.innerHTML = html
+
+    let cancelButton = document.querySelector(".highlightPromtCancel")
+    let submitButton = document.querySelector(".highlightPromtSubmit")
+
+    cancelButton.addEventListener("click", () => {
+        body.innerHTML = ""
+    })
+
+    submitButton.addEventListener("click", () => {
+        let input = document.getElementById("highlightPromtInput").value
+
+        body.innerHTML = ""
+
+        let players = localStorage.read("highlightedPlayers") ?? []
+
+        let stat = false
+
+        players.forEach(player => {
+            if (player.uuid == input) return stat = true
+        })
+
+        if (stat == false) players.push({"uuid": input, "ign": input, "head": input})
+
+        localStorage.write("highlightedPlayers", players)
+    })
 }
