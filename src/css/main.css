@@ -57,7 +57,7 @@
 }
 
 .enabled:hover {
-    background-color: #336c32;
+    background-color: #30642f;
 }
 
 .disabled {
@@ -65,7 +65,7 @@
 }
 
 .disabled:hover {
-    background-color: #85120f;
+    background-color: #7a120e;
 }
 
 /* width */

@@ -129,7 +129,6 @@ window.addEventListener("load", () => {
     addButton.addEventListener("click", () => {
         let scores = localStorage.read(`index_color`)
         let lastIndex = scores.length - 1
-        console.log(lastIndex, lastIndex+1, scores[lastIndex].rating + 1)
 
         if(scores.length >= 12) return
 

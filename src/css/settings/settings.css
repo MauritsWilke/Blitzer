@@ -679,7 +679,7 @@
 }
 
 .playerHighlightButton {
-    margin-left: 50%;
+    margin-left: 53%;
 }
 
 .playerHighlightButton button {
@@ -699,4 +699,75 @@
 .playerHighlightButton button:hover {
     border: 2px solid #FCFCFC;
     color: #FCFCFC;
+}
+
+.highlightPromt {
+    background-color: #191919;
+    width: 50%;
+    height: 250px;
+    border-radius: 18px;
+    margin-left: 35%;
+    margin-top: 15%;
+    position: absolute;
+    z-index: 3;
+    box-shadow: 2px 2px 4px 2px #0000003b;
+}
+
+.highlightPromtInputDiv {
+    width: 50%;
+    margin-left: 25%;
+    margin-top: 7%;
+}
+
+.highlightPromtInputDiv fieldset, legend {
+    border-width: 2px;
+    padding-right: 4px;
+    font-family: Varela;
+    color: #FCFCFC;
+    font-size: 16px;
+}
+
+.highlightPromtInputDiv input[type=text] {
+    font-family: Varela;
+    color: #FCFCFC;
+    font-size: 16px;
+    background-color: transparent;
+    border: none;
+    width: 80%;
+    height: 100%;
+}
+
+.highlightPromtButtons {
+    text-align: center;
+    margin-top: 12%;
+}
+
+.highlightPromtButtons button {
+    padding: 15px 30px 15px 30px;
+    border: none;
+    border-radius: 6px;
+    margin-left: 15%;
+    margin-right: 15%;
+    font-family: Varela;
+    color: #C0C0C0;
+    color: #e3e3e3;
+    text-shadow: 1px 1px black;
+}
+
+.highlightPromtCancel {
+    background-color: #85120E;
+    cursor: pointer;
+}
+
+.highlightPromtCancel:hover {
+    background-color: #7a120e;
+}
+
+.highlightPromtSubmit {
+    background-color: #336C28;
+    cursor: pointer;
+}
+
+.highlightPromtSubmit:hover {
+    background-color: #30642f;
 }

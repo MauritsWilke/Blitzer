@@ -54,7 +54,6 @@ function getShadow (hsl) {
 
         let shadow = getShadow(color)
 
-        console.log(parts
         final += `<span style="color: ${color}; text-shadow: 2px 2px ${shadow};">${parts.split("").slice(1).join("")}</span>`
     })
 
