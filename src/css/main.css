@@ -144,3 +144,25 @@
   background-color: #191919;
   box-shadow: 2px 2px 4px 2px #0000003b;
 }
+
+.toastWarning {
+  background-color: #85120E;
+  width: 25%;
+  z-index: 21;
+  text-align: center;
+  border-radius: 8px;
+  position: absolute;
+  animation-name: toast;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  font-family: Varela;
+  color: #e3e3e3;
+  text-shadow: 1px 1px black;
+  box-shadow: 2px 2px 4px 2px #0000003b;
+  padding: 20px 10px 20px 10px;
+}
+
+@keyframes toast {
+  from{ transform: translateX(0); }
+  to{ transform: translateX(170%); }
+}
