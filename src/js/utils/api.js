@@ -13,9 +13,10 @@ class Mojang {
          async getMojang (username) {
             const response = await fetch(`https://api.mojang.com/users/profiles/minecraft/${username}`)
     
-            if (response.statusCode != 200) return Promise.reject(`${username} does not exsist`)
+            const body = await response.text()
+            let json = {}
 
-            const json = await response.json()
+            if (response.status == 200) json = JSON.parse(body)
 
             return json
         }
