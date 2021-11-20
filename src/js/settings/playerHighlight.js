@@ -6,14 +6,50 @@ const Mojang = new api.Mojang()
 window.addEventListener("load", () => {
     let button = document.querySelector(".playerHighlightButton")
 
+    createHighlightCard()
+
     button.addEventListener("click", async () => {
         highlightPromt()
     })
 })
 
-// function createCard () => {
+function createHighlightCard () {
+    let players = localStorage.read("highlightedPlayers") ?? []
 
-// }
+    let html = ""
+
+    players.forEach((player, index) => {
+        let head = player.head
+        let ign = player.ign
+
+        html += `
+        <div class="playerHighlightCard">
+            <img src="${head}">
+            <span>${ign}</span>
+            <a style="display:none;">${index}</a>
+            <button class="playerHighlightCardButton">&#10005</button>
+        </div>
+        `
+    })
+
+    document.getElementById("playerHighlight").innerHTML = html
+
+    let buttons = document.querySelectorAll(".playerHighlightCardButton")
+
+    buttons.forEach(button => {
+        button.addEventListener("click", e => {
+            let index = e.path[1].childNodes[5].innerText
+            
+            let players = localStorage.read("highlightedPlayers")
+            
+            players.splice(index, 1)
+
+            localStorage.write("highlightedPlayers", players)
+
+            createHighlightCard()
+        })
+    })
+}
 
 function highlightPromt () {
     let body = document.querySelector(".highlightBodyPromt")
@@ -55,7 +91,16 @@ function highlightPromt () {
 
         let response = await Mojang.getMojang(input)
 
-        if (!response) console.log("no response")
+        if (JSON.stringify(response) === '{}') {
+            return toastify({
+                text: "This player does not exist",
+                duration: 3000,
+                className: "toastWarning",
+                position: "left",
+                gravity: "bottom",
+                stopOnFocus: true,
+              }).showToast()
+        }
 
         let players = localStorage.read("highlightedPlayers") ?? []
 
@@ -75,9 +120,11 @@ function highlightPromt () {
                 position: "left",
                 gravity: "bottom",
                 stopOnFocus: true,
-              }).showToast();
+              }).showToast()
         }
 
         localStorage.write("highlightedPlayers", players)
+        
+        createHighlightCard()
     })
 }

@@ -29,9 +29,12 @@ class Mojang {
     async getUUID (username) {
         const response = await fetch(`https://api.mojang.com/users/profiles/minecraft/${username}`)
 
-        const json = await response.json()
+        const body = await response.text()
+        let json = {}
 
-        return {"response": json.id, "statusCode": response.status}
+        if (response.status == 200) json = JSON.parse(body)
+
+        return json.id
     }
 }
 

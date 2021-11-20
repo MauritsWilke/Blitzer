@@ -707,10 +707,11 @@
     height: 250px;
     border-radius: 18px;
     margin-left: 35%;
-    margin-top: 15%;
+    margin-top: 10%;
     position: absolute;
     z-index: 3;
     box-shadow: 2px 2px 4px 2px #0000003b;
+    position: fixed;
 }
 
 .highlightPromtInputDiv {
@@ -769,4 +770,52 @@
 
 .highlightPromtSubmit:hover {
     background-color: #30642f;
+}
+
+.playerHighlightCard {
+    margin-top: 3%;
+    margin-left: 35%;
+
+    width: 50%;
+    height: 60px;
+
+    border-radius: 15px;
+
+    background-color: rgb(28 27 27 / 58%);
+    box-shadow: 2px 2px 4px 2px #0000003b;
+}
+
+.playerHighlightCard img {
+    width: 35px;
+    border-radius: 4px;
+    box-shadow: 2px 4px 2px 0px #181717b3;
+    margin-left: 3%;
+    margin-top: 13px;
+    float: left;
+}
+
+.playerHighlightCard span {
+    font-family: Varela;
+    color: #FCFCFC;
+    margin-left: 3%;
+    font-size: 20px;
+    margin-top: 20px;
+    float: left;
+    text-shadow: 2px 2px black;
+}
+
+.playerHighlightCardButton {
+    appearance: none;
+    background: transparent;
+    border: none;
+    color: #fcfcfc;
+    margin-top: 20px;
+    float: right;
+    margin-right: 2%;
+    cursor: pointer;
+    text-shadow: 2px 2px black;
+}
+
+.playerHighlightCardButton:hover {
+    color: #C0C0C0;
 }
