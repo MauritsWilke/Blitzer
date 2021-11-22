@@ -1,0 +1,6 @@
+{
+    "title": "Select the \"latest.log\" file you wish to use.",
+    "buttonLabel": "Select Log File",
+    "filters": [{ "name": "Log Files", "extensions": ["log"] }],
+    "properties": ["openFile"]
+}
