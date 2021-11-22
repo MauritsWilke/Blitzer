@@ -31,6 +31,7 @@
 	"dependencies": {
 		"@simonwep/pickr": "^1.8.2",
 		"hex-to-hsl": "^1.0.2",
+		"minecraft-folder-path": "^1.2.0",
 		"node-fetch": "^2.6.1",
 		"tippy.js": "^6.3.5",
 		"toastify-js": "^1.11.2"

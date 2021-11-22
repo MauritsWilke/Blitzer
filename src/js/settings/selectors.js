@@ -1,5 +1,9 @@
 const { dialog } = require('electron').remote
+
 const dialogOptions = require('../js/utils/json/dialogOptions.json')
+const path = require("path")
+const mcPath = path.join(require("minecraft-folder-path"), "logs")
+const os = require('os')
 
 window.addEventListener("load", () => {
     let input = document.getElementById("logInput")
@@ -8,60 +12,40 @@ window.addEventListener("load", () => {
 
     let data = localStorage.read("client") ?? ""
 
-    //     let select = document.getElementById("clientSettings")
-
-    // let blc = path.join(mcPath, "blclient/minecraft").replaceAll("\\", "/")
-    // let lc = path.join(os.homedir(), "/.lunarclient/offline/1.8/logs").replaceAll("\\", "/")
-    // let plc = path.join(mcPath, "../../.pvplounge/logs").replaceAll("\\", "/")
-    // let vf = mcPath.replaceAll("\\", "/")
+    let blc = `${path.join(mcPath, "blclient/minecraft").replaceAll("\\", "/")}/latest.log`
+    let lc = `${path.join(os.homedir(), "/.lunarclient/offline/1.8/logs").replaceAll("\\", "/")}/latest.log`
+    let plc = `${path.join(mcPath, "../../.pvplounge/logs").replaceAll("\\", "/")}/latest.log`
+    let vf = `${mcPath.replaceAll("\\", "/")}/latest.log`
 
 
-    // let logPath = ""
-    // let client = ""
-
-
-    // select.value = localStorage.read("client") ?? "vf"
-
-
-    // select.addEventListener("change", event => {
-    //     let target = event.target.value
-        
-    //     if (target == "blc") logPath = blc, client = "blc"
-    //     if (target == "lc") logPath = lc, client = "lc"
-    //     if (target == "plc") logPath = plc, client = "plc"
-    //     if (target == "vf") logPath = vf , client = "vf"
-
-    //     localStorage.write("logPath", logPath)
-    //     localStorage.write("client", client)
-    // })
-
-    // manual client picker
-// window.addEventListener("load", () => {
-//     let button = document.getElementById("manualSelectLog")
-
-//     button.addEventListener("click", async () => {
-//         if (process.platform !== 'darwin') dialogOptions.properties.push('OpenDirectory')
-
-//         let file = await dialog.showOpenDialog(dialogOptions)
-
-//         let path = file.filePaths[0].replace(/\\/g, "\/")
-
-//         localStorage.write("logPath", path)
-//     })
-// })
+    let logPath = ""
+    let client = ""
 
     input.value = data
 
     options.forEach(option => {
         option.addEventListener("click", async e => {
             let text = e.target.innerHTML
-
-            localStorage.write("client", text)
+        
+            if (text == "Badlion Client") logPath = blc, client = "Badlion Client"
+            if (text == "Lunar Client") logPath = lc, client = "Lunar Client"
+            if (text == "PvPLounge") logPath = plc, client = "PvPLounge"
+            if (text == "Standard (Vanilla/Forge/LabyMod)") logPath = vf, client = "Standard (Vanilla/Forge/LabyMod)"
+    
+            localStorage.write("logPath", logPath)
+            localStorage.write("client", client)
 
             input.value = text
             
             if (text == "Custom") {
-                // open dialog
+                if (process.platform !== 'darwin') dialogOptions.properties.push('OpenDirectory')
+
+                let file = await dialog.showOpenDialog(dialogOptions)
+
+                let path = file.filePaths[0].replace(/\\/g, "\/")
+
+                localStorage.write("logPath", path)
+                localStorage.write("client", "Custom")
             }
         })
     })

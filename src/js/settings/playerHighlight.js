@@ -41,6 +41,8 @@ function createHighlightCard () {
             let index = e.path[1].childNodes[5].innerText
             
             let players = localStorage.read("highlightedPlayers")
+
+            if (index == 0 && !players[1]) return localStorage.remove("highlightedPlayers"), createHighlightCard()
             
             players.splice(index, 1)
 
