@@ -2,6 +2,7 @@ const toastify = require('toastify-js')
 const api = require('../js/utils/api')
 
 const Mojang = new api.Mojang()
+const Hypixel = new api.Hypixel()
 
 window.addEventListener("load", () => {
     let button = document.querySelector(".playerHighlightButton")
@@ -97,7 +98,7 @@ function highlightPromt () {
             return toastify({
                 text: "This player does not exist",
                 duration: 3000,
-                className: "toastWarning",
+                className: "toast warning",
                 position: "left",
                 gravity: "bottom",
                 stopOnFocus: true,
@@ -118,7 +119,7 @@ function highlightPromt () {
             toastify({
                 text: "This player is already highlighted",
                 duration: 3000,
-                className: "toastWarning",
+                className: "toast warning",
                 position: "left",
                 gravity: "bottom",
                 stopOnFocus: true,

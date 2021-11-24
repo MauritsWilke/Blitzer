@@ -145,15 +145,14 @@
   box-shadow: 2px 2px 4px 2px #0000003b;
 }
 
-.toastWarning {
-  background-color: #85120E;
+.toast {
   width: 25%;
   z-index: 21;
   text-align: center;
   border-radius: 8px;
   position: absolute;
   animation-name: toast;
-  animation-duration: 1s;
+  animation-duration: .7s;
   animation-fill-mode: forwards;
   font-family: Varela;
   color: #e3e3e3;
@@ -162,7 +161,27 @@
   padding: 20px 10px 20px 10px;
 }
 
+.warning {
+  background-color: #85120E !important;
+}
+
+.success {
+  background-color: #336c28 !important;
+} 
+
 @keyframes toast {
   from{ transform: translateX(0); }
   to{ transform: translateX(170%); }
 }
+
+.toast-close {
+  position: absolute;
+  right: 8px;
+  top: 4px;
+  cursor: pointer;
+}
+
+.toast-close:hover {
+  color: #dad6d6;
+}
+

@@ -57,6 +57,11 @@ window.addEventListener("load", () => {
 
     let data = localStorage.read("windowStyle") ?? "Windows"; localStorage.write("windowStyle", "Windows")
 
+    document.querySelectorAll(".headControls").forEach(header => header.classList.add("hidden"))
+
+    if (data == "Mac") document.getElementById("ncm").classList.remove("hidden")
+    else document.getElementById("ncm").classList.add("hidden"), document.getElementById("ncw").classList.remove("hidden")
+
     input.value = data
 
     options.forEach(option => {
@@ -67,6 +72,10 @@ window.addEventListener("load", () => {
 
             input.value = text
 
+            document.querySelectorAll(".headControls").forEach(header => header.classList.add("hidden"))
+
+            if (text == "Mac") return document.getElementById("ncm").classList.remove("hidden")
+            else return document.getElementById("ncm").classList.add("hidden"), document.getElementById("ncw").classList.remove("hidden")
         })
     })
 })

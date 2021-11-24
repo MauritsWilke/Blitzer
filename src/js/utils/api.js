@@ -38,6 +38,24 @@ class Mojang {
     }
 }
 
+class Hypixel {
+    constructor () {
+
+    }
+
+    async getKeyStatus (key) {
+        const response = await fetch(`https://api.hypixel.net/key?key=${key}`)
+
+        const body = await response.text()
+        let json = {}
+
+        if (response.status == 200) json = JSON.parse(body)
+
+        return json
+    }
+}
+
 module.exports = {
-    Mojang: Mojang
+    Mojang: Mojang,
+    Hypixel: Hypixel
 }
