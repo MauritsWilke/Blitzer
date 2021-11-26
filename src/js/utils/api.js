@@ -5,21 +5,21 @@ class Mojang {
 
     }
 
-        /**
+    /**
      * returns mojang api
      * @param {string} username - players in game name
      * @returns the given players mojang stats
      */
-         async getMojang (username) {
-            const response = await fetch(`https://api.mojang.com/users/profiles/minecraft/${username}`)
-    
-            const body = await response.text()
-            let json = {}
+        async getMojang (username) {
+        const response = await fetch(`https://api.mojang.com/users/profiles/minecraft/${username}`)
 
-            if (response.status == 200) json = JSON.parse(body)
+        const body = await response.text()
+        let json = {}
 
-            return json
-        }
+        if (response.status == 200) json = JSON.parse(body)
+
+        return json
+    }
 
     /**
      * converts players name to uuid
@@ -50,6 +50,19 @@ class Hypixel {
         let json = {}
 
         if (response.status == 200) json = JSON.parse(body)
+
+        return json
+    }
+
+    async getPlayer (key, uuid) {
+        const res = await fetch(`https://api.hypixel.net/player?key=${key}&uuid=${uuid}`)
+
+        const body = await res.text()
+        let json = {}
+
+        if (res.status == 200) {
+            json = JSON.parse(body)
+        }
 
         return json
     }
