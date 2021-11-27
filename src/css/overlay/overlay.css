@@ -5,14 +5,21 @@
     height: 100vh;
     z-index: -1;
     position: fixed;
-    overflow-y: scroll;
     
     border-radius: var(--temp-corner);
     background-color: var(--temp-body-opacity);
   }
 
+  .overlayBody {
+    top: 35px;
+    left: 0;
+    z-index: -1;
+    position: fixed;
+    overflow-y: scroll;
+    bottom: 0;
+  }
+
 .overlayTable {
-  margin-top: 25px;
   user-select: none;
 
   -webkit-user-drag: none;

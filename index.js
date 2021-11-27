@@ -9,7 +9,7 @@ function createWindow() {
 		width: 1000,
 		height: 600,
 		transparent: true,
-		x: width - 750,
+		x: width - 1000,
 		y: 23,
 		frame: false,
 		icon: "./assets/blitzer-logo.ico",
@@ -22,7 +22,10 @@ function createWindow() {
 	})
 
 	mainWindow.loadFile('./src/html/overlay.html')
-	// mainWindow.setBackgroundColor(config.background) // turns opaque brown
+
+	if (process.os == "darwin") app.dock.hide()
+	mainWindow.setAlwaysOnTop(true, 'floating')
+	mainWindow.setVisibleOnAllWorkspaces(true)
 }
 
 app.whenReady().then(() => {

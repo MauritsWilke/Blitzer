@@ -58,9 +58,7 @@ class LogReader extends EventEmmiter {
                         let players = []
                         players = message.split(", ")
 
-                        if (message.includes(":") && players.length < 6 || players.length < 6) return
-
-                        this.emit("players", players)
+                        if (!message.includes(":") && players.length > 6 || players.length > 6) this.emit("players", players)
                     }
                 }
             }
