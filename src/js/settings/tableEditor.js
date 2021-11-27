@@ -58,7 +58,7 @@ window.addEventListener("load", () => {
         customTable.push({"id": id, "value": value})
     })
 
-    localStorage.read("customTable") ?? localStorage.write("customTable", customTable), previewTable()
+    localStorage.read("customTable") ?? localStorage.write("customTable", customTable), previewTable(), overlayTable()
 
 })
 
@@ -84,6 +84,8 @@ window.addEventListener("load", () => {
             localStorage.write("customTable", table)
 
             previewTable()
+            overlayTable()
+            loadCachedPlayers()
         })
     })
 })
@@ -100,7 +102,25 @@ window.addEventListener("load", () => {
     })
 
     previewTable()
+    overlayTable()
 })
+
+function overlayTable () {
+    let table = document.getElementById("overlayHeading")
+
+    let cells = "<th></th>"
+
+
+    localStorage.read("customTable").forEach(item => {
+
+        if (item.value == "None") return
+        
+        else cells += `<th>${item.value}</th>`
+        
+    })
+
+    table.innerHTML = cells
+}
 
 function previewTable () {
     function previewHeader () {

@@ -5,7 +5,51 @@
     height: 100vh;
     z-index: -1;
     position: fixed;
+    overflow-y: scroll;
     
     border-radius: var(--temp-corner);
     background-color: var(--temp-body-opacity);
   }
+
+.overlayTable {
+  margin-top: 25px;
+  user-select: none;
+
+  -webkit-user-drag: none;
+  -webkit-app-region: no-drag;
+}
+
+.overlayTable th {
+  color: #B0B0B0;
+  text-shadow: 1px 1px 1px black;
+
+  font-family: Varela;
+  font-size: 12px;
+
+  width: 1%;
+  padding-top: 20px;
+}
+
+.overlayTable td {
+  color: #B0B0B0;
+  text-shadow: 1px 1px 1px black;
+  text-align: center;
+
+  font-family: Varela;
+  font-size: 14px;
+
+  width: 1%;
+  padding-top: 10px;
+}
+
+.overlayTable img {
+  width: 18px;
+  border-radius: 3px;
+}
+
+.overlayTable i {
+  transform: scale(1.3);
+  margin-left: 50%;
+
+  cursor: pointer;
+}

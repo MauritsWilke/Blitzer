@@ -7,14 +7,12 @@ module.exports = {
 async function getStats (username) {
     let player = await getData(username)
 
-    if (player == "nicked") return {"tags": tags["nicked"], "head": "../assets/overlayIcons/nicked.png", "name": `§4${username}`}
+    if (player == "nicked") return {"tags": tags["nicked"], "head": "../../assets/overlayIcons/nicked.png", "name": `§4${username}`}
     if (player == "invalid") return {"name": "§cInvalid API"}
 
     let stats = {}
 
-    console.log(player)
-
-    stats = {"name": username, "wins": player?.stats?.HungerGames?.wins || 0}
+    stats = {"name": username, "wins": player?.stats?.HungerGames?.wins || 0, "head": `https://crafatar.com/avatars/${player.uuid}?size=64.png`}
 
     return stats
 }
