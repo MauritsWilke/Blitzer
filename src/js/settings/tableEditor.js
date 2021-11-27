@@ -110,13 +110,11 @@ function overlayTable () {
 
     let cells = "<th></th>"
 
-
     localStorage.read("customTable").forEach(item => {
 
         if (item.value == "None") return
         
         else cells += `<th>${item.value}</th>`
-        
     })
 
     table.innerHTML = cells

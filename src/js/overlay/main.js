@@ -35,9 +35,7 @@ async function loadStats (username) {
     searchedPlayers.push(username)
     cachedStats.push(stats)
     
-    sortPlayers("wins", "up")
-
-    // console.log(cachedStats)
+    sortPlayers("wins", "down")
 
     tableConstructor(stats, username)
 }
@@ -54,6 +52,12 @@ function removePlayer (username) {
     let index = searchedPlayers.indexOf(username) == -1 ? Infinity : searchedPlayers.indexOf(username)
 
     searchedPlayers.splice(index, 1)
+
+    cachedStats.forEach((stats, i) => {
+        if (stats.name == username) {
+            cachedStats.splice(i, 1)
+        }
+    })
 
     document.getElementById(`user-${username}`) == null ? null : document.getElementById(`user-${username}`).remove()
 }
@@ -72,7 +76,6 @@ function sortPlayers (type, upordown) {
     })
 
     cachedStats.forEach(stats => {
-        console.log(stats)
         tableConstructor(stats, stats.name)
     })
 }
@@ -81,10 +84,8 @@ function loadCachedPlayers () {
     let tr = document.querySelectorAll(".overlayTable tr:not(:first-child)")
     tr.forEach(element => element.remove())
 
-    searchedPlayers.forEach(async player => {
-        let stats = await getStats(player)
-    
-        tableConstructor(stats, player)
+    cachedStats.forEach(stats => {
+        tableConstructor(stats, stats.name)
     })
 }
 
@@ -92,6 +93,8 @@ function tableConstructor (stats, username) {
     let body = document.querySelector(".overlayTable")
     let headingTable = document.querySelectorAll("#overlayHeading th")
     let element = document.createElement("tr")
+
+    if (document.getElementById(`user-${username}`)) return
 
     let cells = ""
 
