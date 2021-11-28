@@ -185,3 +185,16 @@
   color: #dad6d6;
 }
 
+.orderDown::after {
+  content: "〱";
+  display: inline-block;
+  transform: rotate(-90deg);
+  margin-left: 4px;
+}
+
+.orderUp::after {
+  content: "〱";
+  display: inline-block;
+  transform: rotate(90deg);
+  margin-left: 4px;
+}

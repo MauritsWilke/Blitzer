@@ -2,7 +2,7 @@ window.addEventListener("load", () => {
     let boxs = document.querySelectorAll(".generalCompButton")
 
     boxs.forEach(box => {
-        let data = localStorage.read(box.id) ?? "disabled"; localStorage.write(box.id, "disabled")
+        let data = localStorage.read(box.id) ?? "disabled"
         let button = document.querySelector(`#${box.id} button`)
 
         if (data == "disabled") {
@@ -36,6 +36,7 @@ window.addEventListener("load", () => {
             }
 
             box.classList.toggle("disabled")
+            loadCachedPlayers()
         })
     })
 })

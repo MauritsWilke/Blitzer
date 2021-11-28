@@ -22,11 +22,37 @@ window.addEventListener("load", () => {
         filterdPlayers.forEach(player => loadStats(player))
     })
 
-    loadStats("toxicial")
+    // setTimeout(() => {
+    //     loadStats("toxicial")
+    // }, 4000)
+
+    // setTimeout(() => {
+    //     loadStats("qu3n")
+    // }, 3000)
+
+    // setTimeout(() => {
+    //     loadStats("TheBadAndLucky")
+    // }, 2500)
+
+    // setTimeout(() => {
+    //     loadStats("wqfle")
+    // }, 1000)
+
+    // setTimeout(() => {
+    //     loadStats("minimumwagework")
+    // }, 3000)
+
     loadStats("qu3n")
     loadStats("minimumwagework")
     loadStats("wqfle")
-    
+    loadStats("toxicial")
+    loadStats("TheBadAndLucky")
+    loadStats("Smliey")
+    loadStats("sam_play02")
+    loadStats("oeas")
+    loadStats("allowitman")
+
+    overlayTableSorter ()
 })
 
 async function loadStats (username) {
@@ -34,10 +60,10 @@ async function loadStats (username) {
 
     searchedPlayers.push(username)
     cachedStats.push(stats)
-    
-    sortPlayers("wins", "down")
 
-    tableConstructor(stats, username)
+    let sortBy = localStorage.read("tableOrder")
+    
+    sortPlayers(sortBy.type, sortBy.order)
 }
 
 function clearStats () {
@@ -54,7 +80,7 @@ function removePlayer (username) {
     searchedPlayers.splice(index, 1)
 
     cachedStats.forEach((stats, i) => {
-        if (stats.name == username) {
+        if (stats.username == username) {
             cachedStats.splice(i, 1)
         }
     })
@@ -68,15 +94,15 @@ function sortPlayers (type, upordown) {
 
     cachedStats.sort((a, b) => {
         if (upordown == "up") {
-            return a[type] - b[type]
+            return (a[type] ?? Infinity) - (b[type] ?? Infinity)
         }
         else if (upordown == "down") {
-            return b[type] - a[type]
+            return (b[type] ?? Infinity) - (a[type] ?? Infinity)
         }
     })
 
     cachedStats.forEach(stats => {
-        tableConstructor(stats, stats.name)
+        tableConstructor(stats, stats.username)
     })
 }
 
@@ -84,8 +110,10 @@ function loadCachedPlayers () {
     let tr = document.querySelectorAll(".overlayTable tr:not(:first-child)")
     tr.forEach(element => element.remove())
 
-    cachedStats.forEach(stats => {
-        tableConstructor(stats, stats.name)
+    cachedStats.forEach(async player => {
+        let stats = await getStats(player.username)
+
+        tableConstructor(stats, player.username)
     })
 }
 

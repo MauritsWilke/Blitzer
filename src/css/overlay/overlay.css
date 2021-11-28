@@ -46,12 +46,18 @@
   font-size: 14px;
 
   width: 1%;
+  height: 30px;
   padding-top: 10px;
+
+  transition: all 0.5 ease;
+  animation: tdAnimate linear .5s;
+  animation-iteration-count: 1;
 }
 
 .overlayTable img {
   width: 18px;
   border-radius: 3px;
+  box-shadow: 2px 2px rgba(12, 12, 12, 0.555);
 }
 
 .overlayTable i {
@@ -59,4 +65,15 @@
   margin-left: 50%;
 
   cursor: pointer;
+}
+
+@keyframes tdAnimate{
+  0% {
+    opacity:0;
+    transform:  translate(0px,15px);
+  }
+  100% {
+    opacity:1;
+    transform:  translate(0px,0px);
+  }
 }

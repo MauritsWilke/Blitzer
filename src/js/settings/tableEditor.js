@@ -1,3 +1,4 @@
+const { writeSync } = require('original-fs')
 const { mcParse } = require('../js/utils/colorParser')
 const defaultValue = require('../js/utils/json/defaultTable.json')
 const statPreview = require('../js/utils/json/statPreview.json')
@@ -58,8 +59,9 @@ window.addEventListener("load", () => {
         customTable.push({"id": id, "value": value})
     })
 
-    localStorage.read("customTable") ?? localStorage.write("customTable", customTable), previewTable(), overlayTable()
-
+    localStorage.read("customTable") ?? localStorage.write("customTable", customTable)
+    localStorage.read("tableOrder") ?? localStorage.write("tableOrder", {"type": "wins", "order": "down"})
+    previewTable(), overlayTable()
 })
 
 // saves new table data
@@ -86,6 +88,7 @@ window.addEventListener("load", () => {
             previewTable()
             overlayTable()
             loadCachedPlayers()
+            overlayTableSorter()
         })
     })
 })
@@ -113,11 +116,44 @@ function overlayTable () {
     localStorage.read("customTable").forEach(item => {
 
         if (item.value == "None") return
-        
+        if (!["Tag","Head", "Name", "Kit"].includes(item.value)) cells += `<th style="cursor:pointer;" data-table-order="up">${item.value}</th>`
         else cells += `<th>${item.value}</th>`
     })
 
     table.innerHTML = cells
+}
+
+function overlayTableSorter () {
+    let headings = document.querySelectorAll("#overlayHeading th")
+
+    headings.forEach(heading => {
+        if (!["Tag","Head", "Name", "Kit"].includes(heading.innerHTML)) {
+            heading.addEventListener("click", event => {
+                headings.forEach(element => {element.classList.remove("orderUp"), element.classList.remove("orderDown")})
+
+                let lastType = localStorage.read("tableOrder").type
+                let type = event.toElement.innerHTML.toLowerCase()
+                let order = heading.getAttribute("data-table-order")
+
+                if (type != lastType) heading.classList.add("orderDown"), heading.setAttribute("data-table-order", "down")
+                else {
+                    if (order == "down") {
+                        heading.classList.remove("orderDown"), heading.classList.add("orderUp"), heading.setAttribute("data-table-order", "up")
+                        sortPlayers(type, "up")
+                    } 
+
+                    if (order == "up") {
+                        heading.classList.remove("orderUp"), heading.classList.add("orderDown"), heading.setAttribute("data-table-order", "down")
+                        sortPlayers(type, "down")
+                    }
+                }
+
+                order = heading.getAttribute("data-table-order")
+
+                localStorage.write("tableOrder", {"type": type, "order": order})
+            })
+        }
+    })
 }
 
 function previewTable () {

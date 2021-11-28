@@ -1,0 +1,16 @@
+{
+    "RED": { "mc": "§c"},
+    "GOLD": { "mc": "§6"},
+    "GREEN": { "mc": "§a"},
+    "YELLOW": { "mc": "§e"},
+    "LIGHT_PURPLE": { "mc": "§d"},
+    "WHITE": { "mc": "§f"},
+    "BLUE": { "mc": "§9"},
+    "DARK_GREEN": { "mc": "§2"},
+    "DARK_RED": { "mc": "§4"},
+    "DARK_AQUA": { "mc": "§3"},
+    "DARK_PURPLE": { "mc": "§5"},
+    "DARK_GRAY": { "mc": "§8"},
+    "BLACK": { "mc": "§0"},
+    "DARK_BLUE": { "mc": "§1"}
+}
