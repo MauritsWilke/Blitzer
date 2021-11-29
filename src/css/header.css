@@ -130,3 +130,14 @@
   .mac_button:active {
     filter: contrast(150%);
   }
+
+  .heading-toolbar {
+    width: 20px;
+    float: left;
+    cursor: pointer;
+    z-index: 3;
+    -webkit-app-region: no-drag !important;
+    user-select: none;
+    margin-top: 7px;
+    margin-left: 7px;
+  }
