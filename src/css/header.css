@@ -132,12 +132,29 @@
   }
 
   .heading-toolbar {
-    width: 20px;
+    width: 17px;
     float: left;
     cursor: pointer;
     z-index: 3;
-    -webkit-app-region: no-drag !important;
     user-select: none;
     margin-top: 7px;
-    margin-left: 7px;
+    margin-left: 6px;
+    padding: 3px;
+
+    -webkit-user-drag: none;
+    -webkit-app-region: no-drag;
+  }
+
+  .heading-toolbar:hover {
+    background-color: #b0b0b036;
+    border-radius: 50px;
+  }
+
+  .heading-toolbar:active {
+    background-color: #b0b0b05d;
+    border-radius: 50px;
+  }
+
+  .toolmenu-body {
+
   }

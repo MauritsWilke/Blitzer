@@ -61,28 +61,58 @@ window.addEventListener("load", () => {
     let trackingPanel = document.querySelector(".tracking")
     let settingsPanel = document.querySelector(".settings")
 
+    let toolbar = document.querySelector(".heading-toolbar")
+
 
     overlay.addEventListener("click", () => {
         allPanels.forEach(panel => panel.classList.add("hidden"))
 
         overlayPanel.classList.toggle("hidden")
+        toolbar.classList.remove("hidden")
     })
 
     statSearch.addEventListener("click", () => {
         allPanels.forEach(panel => panel.classList.add("hidden"))
 
         statSearchPanel.classList.toggle("hidden")
+        toolbar.classList.add("hidden")
     })
 
     tracking.addEventListener("click", () => {
         allPanels.forEach(panel => panel.classList.add("hidden"))
 
         trackingPanel.classList.toggle("hidden")
+        toolbar.classList.add("hidden")
     })
 
     settings.addEventListener("click", () => {
         allPanels.forEach(panel => panel.classList.add("hidden"))
 
         settingsPanel.classList.toggle("hidden")
+        toolbar.classList.add("hidden")
+    })
+})
+
+// toolbar code
+window.addEventListener("load", () => {
+    let toolbar = document.querySelector(".heading-toolbar")
+    
+
+    toolbar.addEventListener("click", () => {
+        if (!document.getElementById("toolmenu")) {
+            let body = document.querySelector("toolbar")
+            let element = document.createElement("div")
+    
+            element.classList = "toolmenu-body"
+            element.id = "toolmenu"
+    
+            body.append(element)
+        }
+    })
+
+    document.addEventListener("click", event => {
+        if (!toolbar.contains(event.target) || !document.getElementById("toolmenu")) {
+            document.getElementById("toolmenu").remove()
+        }
     })
 })
