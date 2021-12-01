@@ -168,9 +168,17 @@
     z-index: 5;
     border-radius: 8px;
 
+    display: flex;
+    flex-direction: row;
+
+    user-select: none;
+
     animation-name: toolbarAnimiation;
     animation-duration: .4s;
     animation-fill-mode: forwards;
+
+    -webkit-user-drag: none;
+    -webkit-app-region: no-drag;
   }
 
   @keyframes toolbarAnimiation {
@@ -208,10 +216,33 @@
   }
 
   .toolbar-icons {
-    float: left;
-    
+    margin: 4px 10px 4px 10px;
+
+    animation-name: toolbarIconsAnimiation;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+  }
+
+  .toolbar-icons img:hover {
+    background-color: #b0b0b036;
+    border-radius: 25px;
+    cursor: pointer;
+
+    -webkit-user-drag: none;
+    -webkit-app-region: no-drag;
+  }
+
+  .toolbar-icons img:active {
+    background-color: #b0b0b05d;
+    border-radius: 50px;
   }
 
   .toolbar-icons img {
-    width: 36px;
+    padding: 8px;
+    width: 30px;
+  }
+
+  @keyframes toolbarIconsAnimiation {
+    from{ opacity: 0; }
+    to{ opacity: 1; }
   }

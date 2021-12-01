@@ -145,6 +145,18 @@
   box-shadow: 2px 2px 4px 2px #0000003b;
 }
 
+.tippy-box[data-theme~='blitzer2'] {
+  color: #FCFCFC;
+  font-family: Varela;
+  text-align: center;
+  padding: 15px;
+  border-radius: 8px;
+  background-color: #191919;
+  box-shadow: 2px 2px 4px 2px #0000003b;
+  transform: scale(.6);
+  margin-top: -10px;
+}
+
 .toast {
   width: 25%;
   z-index: 21;

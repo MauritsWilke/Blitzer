@@ -118,6 +118,7 @@ window.addEventListener("load", () => {
     document.addEventListener("click", event => {
         if (!toolbar.contains(event.target) && document.getElementById("toolmenu") ? !document.getElementById("toolmenu").contains(event.target) : null) {
             document.getElementById("toolmenu").classList.add("toolmenuRemove")
+            
 
             setTimeout(() => document.getElementById("toolmenu").remove(), 400)
         }
@@ -129,15 +130,20 @@ function toolbarLoader() {
 
     let html = `
         <div class="toolbar-icons">
-            <img src="../../assets/overlayIcons/toolSearch.png" id="toolSearch">
+            <img src="../../assets/overlayIcons/toolSearch.png" data-tippy-content="Search a Player" id="toolSearch">
         </div>
         <div class="toolbar-icons">
-            <img src="../../assets/overlayIcons/toolMode.png" id="toolMode">
+            <img src="../../assets/overlayIcons/toolMode.png" data-tippy-content="Search Stats by Mode" id="toolMode">
         </div>
         <div class="toolbar-icons">
-            <img src="../../assets/overlayIcons/toolGremlin.png" id="toolGremlin">
+            <img src="../../assets/overlayIcons/toolGremlin.png" data-tippy-content="In-game Gremlin Stats" id="toolGremlin">
         </div>
     `
 
     body.innerHTML = html
+
+    tippy('.toolbar-icons img', {
+        animation: "shift-away",
+        theme: 'blitzer2',
+    })
 }
