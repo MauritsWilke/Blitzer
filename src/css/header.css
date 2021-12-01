@@ -156,5 +156,62 @@
   }
 
   .toolmenu-body {
+    background-color: rgb(28 27 27);
+    box-shadow: 2px 2px 4px 2px #0000003b;
 
+    width: 40px;
+    height: 40px;
+
+    margin-top: 10px;
+    margin-left: 8%;
+
+    z-index: 5;
+    border-radius: 8px;
+
+    animation-name: toolbarAnimiation;
+    animation-duration: .4s;
+    animation-fill-mode: forwards;
+  }
+
+  @keyframes toolbarAnimiation {
+    from{ margin-top: 10px; }
+    to{ margin-top: 40px; }
+
+    from{ width: 40px; }
+    to{ width: 200px; }
+
+    from{ height: 40px; }
+    to{ height: 55px; }
+
+    from{ opacity: .70; }
+    to{ opacity: 1; }
+  }
+
+  .toolmenuRemove {
+    animation-name: toolbarRemoveAnimiation;
+    animation-duration: .9s;
+    animation-fill-mode: backwards;
+  }
+
+  @keyframes toolbarRemoveAnimiation {
+    to{ margin-top: 0px; }
+    from{ margin-top: 40px; }
+
+    to{ width: 0px; }
+    from{ width: 200px; }
+
+    to{ height: 0px; }
+    from{ height: 55px; }
+
+    to{ opacity: 0; }
+    from{ opacity: 1; }
+  }
+
+  .toolbar-icons {
+    float: left;
+    
+  }
+
+  .toolbar-icons img {
+    width: 36px;
   }

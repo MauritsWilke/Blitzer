@@ -97,7 +97,6 @@ window.addEventListener("load", () => {
 window.addEventListener("load", () => {
     let toolbar = document.querySelector(".heading-toolbar")
     
-
     toolbar.addEventListener("click", () => {
         if (!document.getElementById("toolmenu")) {
             let body = document.querySelector("toolbar")
@@ -107,12 +106,38 @@ window.addEventListener("load", () => {
             element.id = "toolmenu"
     
             body.append(element)
+            toolbarLoader()
+        }
+        else {
+            document.getElementById("toolmenu").classList.add("toolmenuRemove")
+
+            setTimeout(() => document.getElementById("toolmenu").remove(), 400)
         }
     })
 
     document.addEventListener("click", event => {
-        if (!toolbar.contains(event.target) || !document.getElementById("toolmenu")) {
-            document.getElementById("toolmenu").remove()
+        if (!toolbar.contains(event.target) && document.getElementById("toolmenu") ? !document.getElementById("toolmenu").contains(event.target) : null) {
+            document.getElementById("toolmenu").classList.add("toolmenuRemove")
+
+            setTimeout(() => document.getElementById("toolmenu").remove(), 400)
         }
     })
 })
+
+function toolbarLoader() {
+    let body = document.getElementById("toolmenu")
+
+    let html = `
+        <div class="toolbar-icons">
+            <img src="../../assets/overlayIcons/toolSearch.png" id="toolSearch">
+        </div>
+        <div class="toolbar-icons">
+            <img src="../../assets/overlayIcons/toolMode.png" id="toolMode">
+        </div>
+        <div class="toolbar-icons">
+            <img src="../../assets/overlayIcons/toolGremlin.png" id="toolGremlin">
+        </div>
+    `
+
+    body.innerHTML = html
+}
