@@ -99,3 +99,21 @@ window.addEventListener("load", () => {
         })
     })
 })
+
+window.addEventListener("load", () => {
+    let input = document.getElementById("SelectModeInput")
+    let options = document.querySelectorAll(".SelectModeContent a")
+
+    let data = localStorage.read("statMode") ?? "Overall"; localStorage.write("statMode", "Overall")
+
+    input.value = data
+
+    options.forEach(option => {
+        option.addEventListener("click", event => {
+            let text = event.target.innerHTML
+            input.value = text
+
+            localStorage.write("statMode", text)
+        })
+    })
+})

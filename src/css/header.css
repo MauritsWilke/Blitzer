@@ -246,3 +246,87 @@
     from{ opacity: 0; }
     to{ opacity: 1; }
   }
+
+  .toolModeMenu {
+    background-color: rgb(28 27 27);
+    box-shadow: 2px 2px 4px 2px #0000003b;
+
+    width: 50%;
+    height: 250px;
+
+    margin-top: 18.5%;
+    margin-left: 25.5%;
+
+    z-index: 5;
+    border-radius: 8px;
+
+    user-select: none;
+    position: fixed;
+
+    -webkit-user-drag: none;
+    -webkit-app-region: no-drag;
+  }
+
+  .modeSelector {
+    cursor: pointer;
+    position: relative;
+    margin-left: 25%;
+    margin-top: 90px;
+    width: 50%;
+    height: 15%;
+}
+
+.modeSelector fieldset, legend {
+    border-width: 2px;
+    padding-right: 4px;
+    font-family: Varela;
+    color: #FCFCFC;
+    font-size: 16px;
+}
+
+.modeSelector input[type=text] {
+    font-family: Varela;
+    color: #FCFCFC;
+    font-size: 16px;
+    background-color: transparent;
+    border: none;
+    width: 80%;
+    height: 100%;
+    cursor: pointer;
+}
+
+
+.SelectModeContent {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    z-index: 10;
+    display: none;
+    position: absolute;
+    width: 98%;
+    left: 1%;
+    margin-top: 12px;
+    background-color: #0e0e0e;
+    border-radius: 6px;
+    box-shadow: 0px 8px 7px 2px rgb(0 0 0 / 20%);
+
+    -webkit-app-region: no-drag;
+}
+
+.SelectModeContent a {
+    color: #FCFCFC;
+    display: block;
+    padding: 12px 16px;
+    font-family: Varela;
+    text-shadow: 1px 1px 1px black;
+    border-radius: 6px;
+    text-decoration: none;
+}
+
+.SelectModeContent a:hover {
+    background-color: #101010;
+}
+
+.modeSelector:hover .SelectModeContent {
+    display: block;
+    cursor: pointer;
+}

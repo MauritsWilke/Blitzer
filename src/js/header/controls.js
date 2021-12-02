@@ -98,29 +98,28 @@ window.addEventListener("load", () => {
     let toolbar = document.querySelector(".heading-toolbar")
     
     toolbar.addEventListener("click", () => {
-        if (!document.getElementById("toolmenu")) {
-            let body = document.querySelector("toolbar")
-            let element = document.createElement("div")
-    
-            element.classList = "toolmenu-body"
-            element.id = "toolmenu"
-    
-            body.append(element)
+        if (document.getElementById("toolmenu").isHidden()) {
+            document.getElementById("toolmenu").showElement()
             toolbarLoader()
         }
         else {
             document.getElementById("toolmenu").classList.add("toolmenuRemove")
 
-            setTimeout(() => document.getElementById("toolmenu").remove(), 400)
+            setTimeout(() => {
+                document.getElementById("toolmenu").hideElement()
+                document.getElementById("toolmenu").classList.remove("toolmenuRemove")
+            }, 400)
         }
     })
 
     document.addEventListener("click", event => {
         if (!toolbar.contains(event.target) && document.getElementById("toolmenu") ? !document.getElementById("toolmenu").contains(event.target) : null) {
             document.getElementById("toolmenu").classList.add("toolmenuRemove")
-            
 
-            setTimeout(() => document.getElementById("toolmenu").remove(), 400)
+            setTimeout(() => {
+                document.getElementById("toolmenu").hideElement()
+                document.getElementById("toolmenu").classList.remove("toolmenuRemove")
+            }, 400)
         }
     })
 })
@@ -142,8 +141,57 @@ function toolbarLoader() {
 
     body.innerHTML = html
 
+    document.getElementById("toolSearch").addEventListener("click", () => toolSearch())
+    document.getElementById("toolMode").addEventListener("click", () => toolMode())
+    document.getElementById("toolGremlin").addEventListener("click", () => toolGremlin())
+
     tippy('.toolbar-icons img', {
         animation: "shift-away",
         theme: 'blitzer2',
     })
+}
+
+// toolMode close loader
+window.addEventListener("load", () => {
+    document.addEventListener("click", event => {
+        if (!document.getElementById("toolMode").contains(event.target) && document.getElementById("toolModeMenu") ? !document.getElementById("toolModeMenu").contains(event.target) : null) {
+            document.getElementById("toolModeMenu").classList.add("opacityHide")
+
+            setTimeout(() => {
+                document.getElementById("toolModeMenu").hideElement()
+                document.getElementById("toolModeMenu").classList.remove("opacityHide")
+            }, 400)
+        }
+    })
+})
+
+function toolSearch () {
+
+}
+
+function toolMode () {
+    document.getElementById("toolModeMenu").showElement()
+
+    document.getElementById("toolmenu").classList.add("toolmenuRemove")
+
+    setTimeout(() => {
+        document.getElementById("toolmenu").hideElement()
+        document.getElementById("toolmenu").classList.remove("toolmenuRemove")
+    }, 400)
+}
+
+function toolGremlin () {
+
+}
+
+Element.prototype.hideElement = function () {
+    return this.classList.add("force-hidden")
+}
+
+Element.prototype.showElement = function () {
+    return this.classList.remove("force-hidden")
+}
+
+Element.prototype.isHidden = function() {
+    return this.classList.contains("force-hidden") ? true : false
 }
