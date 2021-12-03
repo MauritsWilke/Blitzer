@@ -113,7 +113,14 @@ function loadCachedPlayers () {
     cachedStats.forEach(async player => {
         let stats = await getStats(player.username)
 
-        tableConstructor(stats, player.username)
+        removePlayer(player.username)
+
+        searchedPlayers.push(player.username)
+        cachedStats.push(stats)
+
+        let sortBy = localStorage.read("tableOrder")
+    
+        sortPlayers(sortBy.type, sortBy.order)
     })
 }
 
@@ -121,6 +128,7 @@ function tableConstructor (stats, username) {
     let body = document.querySelector(".overlayTable")
     let headingTable = document.querySelectorAll("#overlayHeading th")
     let element = document.createElement("tr")
+    let highlight = localStorage.read("highlightedPlayers") ?? []
 
     if (document.getElementById(`user-${username}`)) return
 
@@ -134,12 +142,18 @@ function tableConstructor (stats, username) {
         }
 
         else {
-            cells += `<td>${mcParse(stats[text]) ?? ""}</td>`
+            cells += `<td>${(mcParse(Number.isInteger(stats[text]) ? stats[text].toLocaleString() : stats[text])) ?? ""}</td>`
         }
     })
 
     element.innerHTML = cells
     element.id = `user-${username}`
+
+    highlight.forEach(player => {
+        if (player.uuid == stats.uuid) {
+            element.style.backgroundColor = "hsl(61deg 100% 59% / 75%)"
+        }
+    })
     
     body.append(element)
 }

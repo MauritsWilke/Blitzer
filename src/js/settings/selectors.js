@@ -55,7 +55,7 @@ window.addEventListener("load", () => {
     let input = document.getElementById("windowInput")
     let options = document.querySelectorAll(".windowSelector-content a")
 
-    let data = localStorage.read("windowStyle") ?? "Windows"; localStorage.write("windowStyle", "Windows")
+    let data = localStorage.read("windowStyle") ?? "Windows" & localStorage.write("windowStyle", "Windows")
 
     document.querySelectorAll(".headControls").forEach(header => header.classList.add("hidden"))
 
@@ -84,7 +84,7 @@ window.addEventListener("load", () => {
     let input = document.getElementById("fontInput")
     let options = document.querySelectorAll(".fontSelector-content a")
 
-    let data = localStorage.read("fontStyle") ?? "Normal"; localStorage.write("fontStyle", "Normal")
+    let data = localStorage.read("fontStyle") ?? "Normal" & localStorage.write("fontStyle", "Normal")
 
     input.value = data
 
@@ -104,7 +104,7 @@ window.addEventListener("load", () => {
     let input = document.getElementById("SelectModeInput")
     let options = document.querySelectorAll(".SelectModeContent a")
 
-    let data = localStorage.read("statMode") ?? "Overall"; localStorage.write("statMode", "Overall")
+    let data = localStorage.read("statMode") ?? "Overall" & localStorage.write("statMode", "Overall")
 
     input.value = data
 
@@ -113,7 +113,7 @@ window.addEventListener("load", () => {
             let text = event.target.innerHTML
             input.value = text
 
-            localStorage.write("statMode", text)
+            localStorage.write("statMode", text), loadCachedPlayers()
         })
     })
 })

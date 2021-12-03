@@ -49,7 +49,7 @@ function createHighlightCard () {
 
             localStorage.write("highlightedPlayers", players)
 
-            createHighlightCard()
+            createHighlightCard(), loadCachedPlayers()
         })
     })
 }
@@ -128,6 +128,6 @@ function highlightPromt () {
 
         localStorage.write("highlightedPlayers", players)
         
-        createHighlightCard()
+        createHighlightCard(), loadCachedPlayers()
     })
 }

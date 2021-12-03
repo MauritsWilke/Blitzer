@@ -160,8 +160,17 @@ window.addEventListener("load", () => {
             setTimeout(() => {
                 document.getElementById("toolModeMenu").hideElement()
                 document.getElementById("toolModeMenu").classList.remove("opacityHide")
-            }, 400)
+            }, 350)
         }
+    })
+
+    document.querySelector(".toolModeMenuClose").addEventListener("click", () => {
+        document.getElementById("toolModeMenu").classList.add("opacityHide")
+
+        setTimeout(() => {
+            document.getElementById("toolModeMenu").hideElement()
+            document.getElementById("toolModeMenu").classList.remove("opacityHide")
+        }, 350)
     })
 })
 
@@ -177,7 +186,7 @@ function toolMode () {
     setTimeout(() => {
         document.getElementById("toolmenu").hideElement()
         document.getElementById("toolmenu").classList.remove("toolmenuRemove")
-    }, 400)
+    }, 350)
 }
 
 function toolGremlin () {

@@ -213,12 +213,12 @@
 
 .opacityShow {
   animation-name: opacityShow;
-  animation-duration: .7s;
+  animation-duration: .5s;
 }
 
 .opacityHide {
   animation-name: opacityHide;
-  animation-duration: .7s;
+  animation-duration: .5s;
 }
 
 @keyframes opacityShow {

@@ -248,7 +248,7 @@
   }
 
   .toolModeMenu {
-    background-color: rgb(28 27 27);
+    background-color: #111111;
     box-shadow: 2px 2px 4px 2px #0000003b;
 
     width: 50%;
@@ -329,4 +329,30 @@
 .modeSelector:hover .SelectModeContent {
     display: block;
     cursor: pointer;
+}
+
+.toolModeMenuClose {
+  position: absolute;
+  cursor: pointer;
+
+  top: 8px;
+  right: 6px;
+
+  border: none;
+  appearance: none;
+  
+  color: #fcfcfc;
+  font-size: 14px;
+
+  background-color: transparent;
+}
+
+.toolModeMenuClose:hover {
+  background-color: #b0b0b036;
+  border-radius: 25px;
+}
+
+.toolModeMenuClose:active {
+  background-color: #b0b0b05d;
+  border-radius: 25px;
 }

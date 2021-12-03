@@ -21,6 +21,7 @@
 
 .overlayTable {
   user-select: none;
+  border-collapse: collapse;
 
   -webkit-user-drag: none;
   -webkit-app-region: no-drag;
