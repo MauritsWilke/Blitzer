@@ -42,21 +42,24 @@ window.addEventListener("load", () => {
     //     loadStats("minimumwagework")
     // }, 3000)
 
-    // loadStats("qu3n")
-    // loadStats("minimumwagework")
-    // loadStats("wqfle")
-    // loadStats("toxicial")
+    loadStats("qu3n")
+    loadStats("minimumwagework")
+    loadStats("wqfle")
+    loadStats("toxicial")
     // loadStats("TheBadAndLucky")
     // loadStats("Smliey")
     // loadStats("sam_play02")
     // loadStats("oeas")
     // loadStats("allowitman")
+    // loadStats("deiondivine")
 
     overlayTableSorter ()
 })
 
 async function loadStats (username) {
     let stats = await getStats(username)
+
+    console.log(username)
 
     searchedPlayers.push(username)
     cachedStats.push(stats)

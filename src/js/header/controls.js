@@ -151,7 +151,7 @@ function toolbarLoader() {
     })
 }
 
-// toolMode close loader
+// close loader
 window.addEventListener("load", () => {
     document.addEventListener("click", event => {
         if (!document.getElementById("toolMode").contains(event.target) && document.getElementById("toolModeMenu") ? !document.getElementById("toolModeMenu").contains(event.target) : null) {
@@ -164,6 +164,21 @@ window.addEventListener("load", () => {
         }
     })
 
+    document.addEventListener("click", event => {
+        if (!document.getElementById("toolSearch").contains(event.target) && document.getElementById("toolSearchMenu") ? !document.getElementById("toolSearchMenu").contains(event.target) : null) {
+            document.getElementById("toolSearchMenu").classList.add("opacityHide")
+
+            setTimeout(() => {
+                document.getElementById("toolSearchMenu").hideElement()
+                document.getElementById("toolSearchMenu").classList.remove("opacityHide")
+            }, 350)
+        }
+    })
+
+    document.getElementById("toolSearchMenu").addEventListener("keypress", event => {
+        if (event.key == "Enter") return overlaySearchPlayer()
+    })
+
     document.querySelector(".toolModeMenuClose").addEventListener("click", () => {
         document.getElementById("toolModeMenu").classList.add("opacityHide")
 
@@ -172,10 +187,26 @@ window.addEventListener("load", () => {
             document.getElementById("toolModeMenu").classList.remove("opacityHide")
         }, 350)
     })
+
+    document.querySelector(".toolSearchMenuClose").addEventListener("click", () => {
+        document.getElementById("toolSearchMenu").classList.add("opacityHide")
+
+        setTimeout(() => {
+            document.getElementById("toolSearchMenu").hideElement()
+            document.getElementById("toolSearchMenu").classList.remove("opacityHide")
+        }, 350)
+    })
 })
 
 function toolSearch () {
+    document.getElementById("toolSearchMenu").showElement()
 
+    document.getElementById("toolmenu").classList.add("toolmenuRemove")
+
+    setTimeout(() => {
+        document.getElementById("toolmenu").hideElement()
+        document.getElementById("toolmenu").classList.remove("toolmenuRemove")
+    }, 350)
 }
 
 function toolMode () {
@@ -191,6 +222,20 @@ function toolMode () {
 
 function toolGremlin () {
 
+}
+
+function overlaySearchPlayer () {
+    let username = document.getElementById("overlaySearcherInput").value
+
+    loadStats(username)
+
+    document.getElementById("toolSearchMenu").classList.add("opacityHide")
+    document.getElementById("overlaySearcherInput").value = ""
+
+    setTimeout(() => {
+        document.getElementById("toolSearchMenu").hideElement()
+        document.getElementById("toolSearchMenu").classList.remove("opacityHide")
+    }, 350)
 }
 
 Element.prototype.hideElement = function () {

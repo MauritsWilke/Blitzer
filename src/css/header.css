@@ -356,3 +356,74 @@
   background-color: #b0b0b05d;
   border-radius: 25px;
 }
+
+.toolSearchMenu {
+  background-color: #111111;
+  box-shadow: 2px 2px 4px 2px #0000003b;
+
+  width: 50%;
+  height: 250px;
+
+  margin-top: 18.5%;
+  margin-left: 25.5%;
+
+  z-index: 5;
+  border-radius: 8px;
+
+  user-select: none;
+  position: fixed;
+
+  -webkit-user-drag: none;
+  -webkit-app-region: no-drag;
+}
+
+.toolSearchMenuClose {
+  position: absolute;
+  cursor: pointer;
+
+  top: 8px;
+  right: 6px;
+
+  border: none;
+  appearance: none;
+  
+  color: #fcfcfc;
+  font-size: 14px;
+
+  background-color: transparent;
+}
+
+.toolSearchMenuClose:hover {
+  background-color: #b0b0b036;
+  border-radius: 25px;
+}
+
+.toolSearchMenuClose:active {
+  background-color: #b0b0b05d;
+  border-radius: 25px;
+}
+
+.modeSearcher {
+  width: 75%;
+  position: relative;
+  margin-left: 12.5%;
+  margin-top: 90px;
+}
+
+.modeSearcher fieldset, legend {
+  border-width: 2px;
+  padding-right: 4px;
+  font-family: Varela;
+  color: #FCFCFC;
+  font-size: 16px;
+}
+
+.modeSearcher input[type=text] {
+  font-family: Varela;
+  color: #FCFCFC;
+  font-size: 16px;
+  background-color: transparent;
+  border: none;
+  width: 100%;
+  height: 100%;
+}

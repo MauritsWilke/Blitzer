@@ -12,9 +12,6 @@ async function getStats (username) {
     let player = await getData(username)
     let mode = localStorage.read("statMode") == "Solos" ? "solo" : localStorage.read("statMode") == "Teams" ? "teams" : "overall"
 
-    console.log(mode)
-    console.log(localStorage.read("statMode") == "Solos")
-
     if (player == "nicked") return {"tags": tags["nicked"], "head": "../../assets/overlayIcons/nicked.png", "username": username, "name": `§4${username}`}
     if (player == "invalid") return {"name": "§cInvalid API"}
 
