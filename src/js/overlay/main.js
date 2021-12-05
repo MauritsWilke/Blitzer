@@ -52,14 +52,16 @@ window.addEventListener("load", () => {
     // loadStats("oeas")
     // loadStats("allowitman")
     // loadStats("deiondivine")
+    // loadStats("quig")
+    // loadStats("hypixel")
 
     overlayTableSorter ()
 })
 
 async function loadStats (username) {
-    let stats = await getStats(username)
+    if (document.getElementById(`user-${username}`)) return
 
-    console.log(username)
+    let stats = await getStats(username)
 
     searchedPlayers.push(username)
     cachedStats.push(stats)
@@ -144,8 +146,12 @@ function tableConstructor (stats, username) {
             cells += `<td><img src=${stats[text]}></td>`
         }
 
+        else if (!["head", "name", "kit", ""].includes(text)) {
+            cells += `<td>${mcParse(!Number.isInteger(stats[text]) ? stats.color == undefined ? "" : stats.color + stats[text] : stats.color + stats[text].toLocaleString()) ?? ""}</td>`
+        }
+
         else {
-            cells += `<td>${(mcParse(Number.isInteger(stats[text]) ? stats[text].toLocaleString() : stats[text])) ?? ""}</td>`
+            cells += `<td>${mcParse(stats[text]) ?? ""}</td>`
         }
     })
 

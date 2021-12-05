@@ -1,4 +1,6 @@
 window.addEventListener("load", () => {
+    const rgb2hex = (rgb) => `#${rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/).slice(1).map(n => parseInt(n, 10).toString(16).padStart(2, '0')).join('')}`
+
     let cards = document.querySelectorAll(".indexColorBox")
     let colors = []
 
@@ -6,7 +8,7 @@ window.addEventListener("load", () => {
         let color = card.querySelector(".indexColorBoxColor").style.backgroundColor
         let value = card.querySelector(".indexColorBoxText input").value
 
-        colors.push({"color": color, "rating": +value})
+        colors.push({"color": rgb2hex(color), "rating": +value})
     })
     
     localStorage.read("index_color") ?? localStorage.write("index_color", colors)

@@ -10,11 +10,9 @@ module.exports = {
 }
 
 async function getStats (username) {
-    // let player = await getData(username)
-    let player = tempData
+    let player = await getData(username)
+    // let player = tempData
     let mode = localStorage.read("statMode") == "Solos" ? "solo" : localStorage.read("statMode") == "Teams" ? "teams" : "overall"
-
-    console.log(player)
 
     if (player == "nicked") return {"tags": tags["nicked"], "head": "../../assets/overlayIcons/nicked.png", "username": username, "name": `§4${username}`}
     if (player == "invalid") return {"name": "§cInvalid API"}
@@ -34,7 +32,7 @@ async function getStats (username) {
     let games = player?.stats?.HungerGames?.games_played || 0
     let wlr = (overallWins / losses).toFixed()
     let kdr = ((player?.stats?.HungerGames?.kills || 0) / (player.stats.HungerGames.deaths || 0)).toFixed(2)
-    let kg = ((player?.stats?.HungerGames?.kills || 0) / (player?.stats?.HungerGames?.games_played || 0)).toFixed(2)
+    let kg = ((player?.stats?.HungerGames?.kills || 0) / (player?.stats?.HungerGames?.games_played || 1)).toFixed(2)
     let level = ((Math.sqrt(player.networkExp + 15312.5) - 125/Math.sqrt(2))/(25*Math.sqrt(2))).toFixed(0)
     let xs = amountOfXKits(player)
 
@@ -54,7 +52,10 @@ async function getStats (username) {
         "wlr": +isNaN(wlr) == true ? 0 : wlr,
         "kdr": +isNaN(kdr) == true ? 0 : kdr,
         "k/g": +isNaN(kg) == true ? 0 : kg,
+        "color": getIndexColor(+isNaN(kg) == true ? 0 : kg)
     }
+
+    console.log(stats)
 
     return stats
 }
@@ -93,8 +94,8 @@ async function getFormattedRank (player, display) {
     let rank = await getPlayerTypeRank(player)
     let color = await getPlusColor(player)
 
-    let ranks = { 'MVP+': `§b[MVP${color}+§b]`, 'MVP++': `§6[MVP${color}++§6]`, 'MVP': '§b[MVP]', 'VIP+': `§a[VIP§6+§a]`, 'VIP': `§a[VIP]`, 'YOUTUBE': `§c[§fYOUTUBE§c]`, 'PIG+++': `§d[PIG${color}+++§d]`, 'HELPER': `§9[HELPER]`, 'MOD': `§2[MOD]`, 'ADMIN': `§c[ADMIN]`, 'OWNER': `§c[OWNER]`, 'SLOTH': `§c[SLOTH]`, 'ANGUS': `§c[ANGUS]`, 'APPLE': '§6[APPLE]', 'MOJANG': `§6[MOJANG]`, 'BUILD TEAM': `§3[BUILD TEAM]`, 'EVENTS': `§6[EVENTS]` }[rank]
-    let normal = { "NON": `§7${player.displayname}`, "MVP+": `§b${player.displayname}`, "MVP++": `§6${player.displayname}`, "MVP": `§b${player.displayname}`, "VIP+": `§a${player.displayname}`, "VIP": `§a${player.displayname}`, "YOUTUBE": `§c${player.displayname}`, "PIG+++": `§d${player.displayname}`, "HELPER": `§9${player.displayname}`, "MOD": `§2${player.displayname}]`, "ADMIN": `§c${player.displayname}`, "OWNER": `§c${player.displayname}`, "SLOTH": `§c${player.displayname}`, "ANGUS": `§c${player.displayname}`, "APPLE": `§6${player.displayname}`, "MOJANG": `§6${player.displayname}`, "BUILD TEAM": `§3${player.displayname}`, "EVENTS": `§6${player.displayname}` }[rank]
+    let ranks = { 'MVP+': `§b[MVP${color}+§b]`, 'MVP++': `§6[MVP${color}++§6]`, 'MVP': '§b[MVP]', 'VIP+': `§a[VIP§6+§a]`, 'VIP': `§a[VIP]`, 'YOUTUBER': `§c[§fYOUTUBE§c]`, 'PIG+++': `§d[PIG${color}+++§d]`, 'HELPER': `§9[HELPER]`, 'MOD': `§2[MOD]`, 'ADMIN': `§c[ADMIN]`, 'OWNER': `§c[OWNER]`, 'SLOTH': `§c[SLOTH]`, 'ANGUS': `§c[ANGUS]`, 'APPLE': '§6[APPLE]', 'MOJANG': `§6[MOJANG]`, 'BUILD TEAM': `§3[BUILD TEAM]`, 'EVENTS': `§6[EVENTS]` }[rank]
+    let normal = { "NON": `§7${player.displayname}`, "MVP+": `§b${player.displayname}`, "MVP++": `§6${player.displayname}`, "MVP": `§b${player.displayname}`, "VIP+": `§a${player.displayname}`, "VIP": `§a${player.displayname}`, "YOUTUBER": `§c${player.displayname}`, "PIG+++": `§d${player.displayname}`, "HELPER": `§9${player.displayname}`, "MOD": `§2${player.displayname}]`, "ADMIN": `§c${player.displayname}`, "OWNER": `§c${player.displayname}`, "SLOTH": `§c${player.displayname}`, "ANGUS": `§c${player.displayname}`, "APPLE": `§6${player.displayname}`, "MOJANG": `§6${player.displayname}`, "BUILD TEAM": `§3${player.displayname}`, "EVENTS": `§6${player.displayname}` }[rank]
 
     return display == true ? `${ranks} ${normal}` : normal
 }
@@ -155,5 +156,19 @@ function amountOfXKits (player) {
     }
 
     return map.size
+}
+
+function getIndexColor (kg) {
+    let table = localStorage.read("index_color")
+
+    kg = +kg
+
+    for (let key of table) {
+        if (key.rating >= kg) {
+            return `§#${key.color}`
+        }        
+    }
+
+    if (table[table.length - 1].rating <= kg) return `§#${table[table.length - 1].color}`
 }
 
