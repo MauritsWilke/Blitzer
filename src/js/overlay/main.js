@@ -42,18 +42,18 @@ window.addEventListener("load", () => {
     //     loadStats("minimumwagework")
     // }, 3000)
 
-    // loadStats("qu3n")
-    // loadStats("minimumwagework")
-    // loadStats("wqfle")
-    // loadStats("toxicial")
-    // loadStats("TheBadAndLucky")
-    // loadStats("Smliey")
-    // loadStats("sam_play02")
-    // loadStats("oeas")
-    // loadStats("allowitman")
-    // loadStats("deiondivine")
-    // loadStats("quig")
-    // loadStats("hypixel")
+    loadStats("qu3n")
+    loadStats("minimumwagework")
+    loadStats("wqfle")
+    loadStats("toxicial")
+    loadStats("TheBadAndLucky")
+    loadStats("Smliey")
+    loadStats("sam_play02")
+    loadStats("oeas")
+    loadStats("allowitman")
+    loadStats("deiondivine")
+    loadStats("quig")
+    loadStats("hypixel")
 
     overlayTableSorter ()
 })
@@ -91,6 +91,7 @@ function removePlayer (username) {
     })
 
     document.getElementById(`user-${username}`) == null ? null : document.getElementById(`user-${username}`).remove()
+    document.getElementById(`menu-${username}`) == null ? null : document.getElementById(`menu-${username}`).remove()
 }
 
 function sortPlayers (type, upordown) {
@@ -133,6 +134,7 @@ function tableConstructor (stats, username) {
     let body = document.querySelector(".overlayTable")
     let headingTable = document.querySelectorAll("#overlayHeading th")
     let element = document.createElement("tr")
+    let menu = document.createElement("div")
     let highlight = localStorage.read("highlightedPlayers") ?? []
 
     if (document.getElementById(`user-${username}`)) return
@@ -155,6 +157,8 @@ function tableConstructor (stats, username) {
         }
     })
 
+    cells += `<td class="rowOption"><span>...</span></td>`
+
     element.innerHTML = cells
     element.id = `user-${username}`
 
@@ -165,4 +169,38 @@ function tableConstructor (stats, username) {
     })
     
     body.append(element)
+
+    if (document.getElementById(`menu-${username}`)) document.getElementById(`menu-${username}`).remove()
+
+    menu.classList = "playerOptionsMenu force-hidden"
+    menu.id = `menu-${username}`
+    menu.setAttribute("data-option-username", username)
+
+    body.append(menu)
+    
+
+    document.querySelector(`#user-${username} .rowOption`).addEventListener("click", event => {
+        let menuButton = document.getElementById(`menu-${username}`)
+        
+        if (menuButton.isHidden()) menuButton.showElement()
+        else {
+            document.getElementById(`menu-${username}`).classList.add("opacityHide")
+
+            setTimeout(() => {
+                document.getElementById(`menu-${username}`).hideElement()
+                document.getElementById(`menu-${username}`).classList.remove("opacityHide")
+            }, 350)
+        }
+    })
+
+    document.addEventListener("click", event => {
+        if (!document.querySelector(`#user-${username} .rowOption`).contains(event.target) && document.getElementById(`menu-${username}`) ? !document.getElementById(`menu-${username}`).contains(event.target) : null) {
+            document.getElementById(`menu-${username}`).classList.add("opacityHide")
+
+            setTimeout(() => {
+                document.getElementById(`menu-${username}`).hideElement()
+                document.getElementById(`menu-${username}`).classList.remove("opacityHide")
+            }, 350)
+        }
+    })
 }

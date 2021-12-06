@@ -78,3 +78,46 @@
     transform:  translate(0px,0px);
   }
 }
+
+.rowOption {
+  vertical-align: baseline !important;
+  width: .10% !important;
+
+  text-indent: -30px !important;
+  text-shadow: 2px 2px black !important;
+  
+  font-size: 16px !important;
+  font-weight: 900 !important;
+
+  color: #fcfcfc !important;
+  cursor: pointer !important;
+}
+
+.rowOption span {
+  padding: 0px 6px 5px 6px;
+}
+
+.rowOption span:hover {
+  background-color: #b0b0b036;
+  border-radius: 25px;
+}
+
+.rowOption span:active {
+  background-color: #b0b0b05d;
+  border-radius: 25px;
+}
+
+.playerOptionsMenu {
+  background-color: #111111;
+  box-shadow: 2px 2px 4px 2px #0000003b;
+  width: 15%;
+  height: 160px;
+  margin-top: -.5%;
+  margin-left: 83%;
+  z-index: 5;
+  border-radius: 8px;
+  user-select: none;
+  position: absolute;
+  -webkit-user-drag: none;
+  -webkit-app-region: no-drag;
+}

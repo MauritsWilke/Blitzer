@@ -50,7 +50,7 @@ function getShadow (hsl) {
             parts = parts.replace(`${hex}`, "");
             color = hexToHSL(hex)
 
-        } else color = colors[parts[0]].hsl || ""
+        } else color = colors[parts[0]].hsl ?? ""
 
         let shadow = getShadow(color)
 
