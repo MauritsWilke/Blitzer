@@ -176,6 +176,14 @@ function tableConstructor (stats, username) {
     menu.id = `menu-${username}`
     menu.setAttribute("data-option-username", username)
 
+    menu.innerHTML = `
+    <div class="playerOptionsMenuText">
+        <a>Remove Player</a>
+        <a>Search Player</a>
+        <a>Highlight Player</a>
+    </div>
+    `
+
     body.append(menu)
     
 
@@ -202,5 +210,9 @@ function tableConstructor (stats, username) {
                 document.getElementById(`menu-${username}`).classList.remove("opacityHide")
             }, 350)
         }
+    })
+
+    document.querySelector(`#menu-${username} .playerOptionsMenuText`).addEventListener("click", event => {
+        console.log(event)
     })
 }

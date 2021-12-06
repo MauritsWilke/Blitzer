@@ -110,14 +110,38 @@
 .playerOptionsMenu {
   background-color: #111111;
   box-shadow: 2px 2px 4px 2px #0000003b;
-  width: 15%;
-  height: 160px;
+  width: 25%;
+  height: 180px;
   margin-top: -.5%;
-  margin-left: 83%;
+  margin-left: 74%;
   z-index: 5;
   border-radius: 8px;
   user-select: none;
   position: absolute;
   -webkit-user-drag: none;
   -webkit-app-region: no-drag;
+}
+
+.playerOptionsMenuText {
+  height: 100%;
+}
+
+.playerOptionsMenuText a {
+  font-size: 18px;
+  font-family: Varela;
+
+  color: #fcfcfc;
+  border-radius: 5px;
+
+  display: flex;
+  padding: 19px 0px 19px 10px;
+  cursor: pointer;
+}
+
+.playerOptionsMenuText a:hover {
+  background-color: #86868636;
+}
+
+.playerOptionsMenuText a:active {
+  background-color: #7979795d;
 }
