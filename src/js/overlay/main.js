@@ -178,9 +178,9 @@ function tableConstructor (stats, username) {
 
     menu.innerHTML = `
     <div class="playerOptionsMenuText">
-        <a>Remove Player</a>
-        <a>Search Player</a>
-        <a>Highlight Player</a>
+        <a><img src="../../assets/overlayIcons/removePlayer.png"><span>Remove Player</span></a>
+        <a><img src="../../assets/overlayIcons/highlightPlayer.png"><span>Highlight Player</span></a>
+        <a><img src="../../assets/overlayIcons/toolSearch.png"><span>Stat Search Player</span></a>
     </div>
     `
 
@@ -202,7 +202,7 @@ function tableConstructor (stats, username) {
     })
 
     document.addEventListener("click", event => {
-        if (!document.querySelector(`#user-${username} .rowOption`).contains(event.target) && document.getElementById(`menu-${username}`) ? !document.getElementById(`menu-${username}`).contains(event.target) : null) {
+        if (!document.querySelector(`#user-${username} .rowOption`).contains(event.target)) {
             document.getElementById(`menu-${username}`).classList.add("opacityHide")
 
             setTimeout(() => {
@@ -212,7 +212,78 @@ function tableConstructor (stats, username) {
         }
     })
 
-    document.querySelector(`#menu-${username} .playerOptionsMenuText`).addEventListener("click", event => {
-        console.log(event)
+    document.querySelector(`#menu-${username} .playerOptionsMenuText`).addEventListener("click", async event => {
+        let target = event.target.innerHTML
+        let player = document.querySelector(`#menu-${username}`).getAttribute("data-option-username")
+
+        if (target.includes("Remove Player")) {
+            removePlayer(player)
+        }
+
+        if (target.includes("Highlight Player")) {
+            let element = document.getElementById(`user-${player}`)
+
+            if (!element.style.backgroundColor) {
+
+                let response = await Mojang.getMojang(player)
+
+                if (JSON.stringify(response) === '{}') {
+                    return toastify({
+                        text: "This player does not exist",
+                        duration: 3000,
+                        className: "toast warning",
+                        position: "left",
+                        gravity: "bottom",
+                        stopOnFocus: true,
+                      }).showToast()
+                }
+
+                element.style.backgroundColor = "hsl(61deg 100% 59% / 75%)"
+        
+                let players = localStorage.read("highlightedPlayers") ?? []
+        
+                let stat = false
+        
+                players.forEach(player => {
+                    if (player.uuid == response.id) return stat = true
+                })
+        
+                if (stat == false) players.push({"uuid": response.id, "ign": response.name, "head": `https://crafatar.com/avatars/${response.id}?size=64.png`})
+        
+                if (stat == true) {
+                    toastify({
+                        text: "This player is already highlighted",
+                        duration: 3000,
+                        className: "toast warning",
+                        position: "left",
+                        gravity: "bottom",
+                        stopOnFocus: true,
+                      }).showToast()
+                }
+
+                if (players.length == 0) return
+        
+                localStorage.write("highlightedPlayers", players), createHighlightCard()
+            }
+            else {
+                element.style.backgroundColor = ""
+
+                let players = localStorage.read("highlightedPlayers") ?? []
+
+                players.forEach(user => {
+                    if (user.ign.toLowerCase() == player.toLowerCase()) {
+                        let index = players.indexOf(user)
+
+                        if (index == 0 && !players[1]) players.splice(0, 0)
+
+                        players.splice(index, 1)
+                    }
+                })
+
+                if (players.length == 0) return localStorage.remove("highlightedPlayers"), createHighlightCard()
+
+                localStorage.write("highlightedPlayers", players), createHighlightCard()
+            }
+        }
     })
 }
