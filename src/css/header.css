@@ -186,7 +186,7 @@
     to{ margin-top: 40px; }
 
     from{ width: 40px; }
-    to{ width: 200px; }
+    to{ width: 330px; }
 
     from{ height: 40px; }
     to{ height: 55px; }
@@ -206,7 +206,7 @@
     from{ margin-top: 40px; }
 
     to{ width: 0px; }
-    from{ width: 200px; }
+    from{ width: 330px; }
 
     to{ height: 0px; }
     from{ height: 55px; }

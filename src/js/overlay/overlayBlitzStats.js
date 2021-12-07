@@ -55,8 +55,6 @@ async function getStats (username) {
         "color": getIndexColor(+isNaN(kg) == true ? 0 : kg)
     }
 
-    console.log(stats)
-
     return stats
 }
 

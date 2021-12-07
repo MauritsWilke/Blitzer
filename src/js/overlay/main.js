@@ -112,6 +112,11 @@ function sortPlayers (type, upordown) {
     })
 }
 
+function refreshPlayer (username) {
+    removePlayer(username)
+    loadStats(username)
+}
+
 function loadCachedPlayers () {
     let tr = document.querySelectorAll(".overlayTable tr:not(:first-child)")
     tr.forEach(element => element.remove())
@@ -175,9 +180,11 @@ function tableConstructor (stats, username) {
     menu.classList = "playerOptionsMenu force-hidden"
     menu.id = `menu-${username}`
     menu.setAttribute("data-option-username", username)
+    menu.setAttribute("data-option-uuid", stats.uuid)
 
     menu.innerHTML = `
     <div class="playerOptionsMenuText">
+        <a><img src="../../assets/overlayIcons/refreshPlayer.png"><span>Refresh Player</span></a>
         <a><img src="../../assets/overlayIcons/removePlayer.png"><span>Remove Player</span></a>
         <a><img src="../../assets/overlayIcons/highlightPlayer.png"><span>Highlight Player</span></a>
         <a><img src="../../assets/overlayIcons/toolSearch.png"><span>Stat Search Player</span></a>
@@ -215,9 +222,14 @@ function tableConstructor (stats, username) {
     document.querySelector(`#menu-${username} .playerOptionsMenuText`).addEventListener("click", async event => {
         let target = event.target.innerHTML
         let player = document.querySelector(`#menu-${username}`).getAttribute("data-option-username")
+        let uuid = document.querySelector(`#menu-${username}`).getAttribute("data-option-uuid")
 
         if (target.includes("Remove Player")) {
             removePlayer(player)
+        }
+
+        if (target.includes("Refresh Player")) {
+            refreshPlayer(player)
         }
 
         if (target.includes("Highlight Player")) {
@@ -271,7 +283,7 @@ function tableConstructor (stats, username) {
                 let players = localStorage.read("highlightedPlayers") ?? []
 
                 players.forEach(user => {
-                    if (user.ign.toLowerCase() == player.toLowerCase()) {
+                    if (user.uuid == uuid) {
                         let index = players.indexOf(user)
 
                         if (index == 0 && !players[1]) players.splice(0, 0)

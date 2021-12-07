@@ -137,6 +137,12 @@ function toolbarLoader() {
         <div class="toolbar-icons">
             <img src="../../assets/overlayIcons/toolGremlin.png" data-tippy-content="In-game Gremlin Stats" id="toolGremlin">
         </div>
+        <div class="toolbar-icons">
+            <img src="../../assets/overlayIcons/removePlayers.png" data-tippy-content="Removes all Players" id="toolRemoveAll">
+        </div>
+        <div class="toolbar-icons">
+            <img src="../../assets/overlayIcons/refreshPlayer.png" data-tippy-content="Refreshs all Players" id="toolRefreshAll">
+        </div>
     `
 
     body.innerHTML = html
@@ -144,6 +150,8 @@ function toolbarLoader() {
     document.getElementById("toolSearch").addEventListener("click", () => toolSearch())
     document.getElementById("toolMode").addEventListener("click", () => toolMode())
     document.getElementById("toolGremlin").addEventListener("click", () => toolGremlin())
+    document.getElementById("toolRemoveAll").addEventListener("click", () => toolRemoveAll())
+    document.getElementById("toolRefreshAll").addEventListener("click", () => toolResfreshAll())
 
     tippy('.toolbar-icons img', {
         animation: "shift-away",
@@ -154,7 +162,7 @@ function toolbarLoader() {
 // close loader
 window.addEventListener("load", () => {
     document.addEventListener("click", event => {
-        if (!document.getElementById("toolMode").contains(event.target) && document.getElementById("toolModeMenu") ? !document.getElementById("toolModeMenu").contains(event.target) : null) {
+        if (!document.getElementById("toolModeMenu").contains(event.target) && document.getElementById("toolMode") ? !document.getElementById("toolMode").contains(event.target) : null) {
             document.getElementById("toolModeMenu").classList.add("opacityHide")
 
             setTimeout(() => {
@@ -165,7 +173,7 @@ window.addEventListener("load", () => {
     })
 
     document.addEventListener("click", event => {
-        if (!document.getElementById("toolSearch").contains(event.target) && document.getElementById("toolSearchMenu") ? !document.getElementById("toolSearchMenu").contains(event.target) : null) {
+        if (!document.getElementById("toolSearchMenu").contains(event.target) && document.getElementById("toolSearch") ? !document.getElementById("toolSearch").contains(event.target) : null) {
             document.getElementById("toolSearchMenu").classList.add("opacityHide")
 
             setTimeout(() => {
@@ -222,6 +230,28 @@ function toolMode () {
 
 function toolGremlin () {
 
+}
+
+function toolRemoveAll () {
+    clearStats()
+
+    document.getElementById("toolmenu").classList.add("toolmenuRemove")
+
+    setTimeout(() => {
+        document.getElementById("toolmenu").hideElement()
+        document.getElementById("toolmenu").classList.remove("toolmenuRemove")
+    }, 350)
+}
+
+function toolResfreshAll () {
+    loadCachedPlayers()
+
+    document.getElementById("toolmenu").classList.add("toolmenuRemove")
+
+    setTimeout(() => {
+        document.getElementById("toolmenu").hideElement()
+        document.getElementById("toolmenu").classList.remove("toolmenuRemove")
+    }, 350)
 }
 
 function overlaySearchPlayer () {
