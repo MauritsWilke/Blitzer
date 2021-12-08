@@ -209,7 +209,7 @@ function tableConstructor (stats, username) {
     })
 
     document.addEventListener("click", event => {
-        if (!document.querySelector(`#user-${username} .rowOption`).contains(event.target)) {
+        if (document.querySelector(`#user-${username} .rowOption`) ? !document.querySelector(`#user-${username} .rowOption`).contains(event.target) : null) {
             document.getElementById(`menu-${username}`).classList.add("opacityHide")
 
             setTimeout(() => {
