@@ -3,18 +3,19 @@ const { getStats } = require('../js/overlay/overlayBlitzStats.js')
 
 let searchedPlayers = []
 let cachedStats = []
+let gremlin = new Map()
 
 window.addEventListener("load", () => {
     const logPath = localStorage.read("logPath") ?? ""
     const logReader = new LogReader(logPath)
 
-    logReader.on("server_change", () => clearStats())
+    logReader.on("server_change", () => clearStats(), gremlinClear())
 
-    logReader.on("leave", username => removePlayer(username))
+    logReader.on("leave", username => removePlayer(username), gremlinRemove(username))
     
     logReader.on("join", username => loadStats(username))
 
-    logReader.on("death", username => removePlayer(username))
+    logReader.on("death", username => removePlayer(username), gremlinRemove(username))
 
     logReader.on("players", players => {
         let filterdPlayers = players.filter(x => !searchedPlayers.includes(x))
@@ -115,6 +116,33 @@ function sortPlayers (type, upordown) {
 function refreshPlayer (username) {
     removePlayer(username)
     loadStats(username)
+}
+
+function gremlinClear() {
+    gremlin.clear()
+}
+
+function gremlinAdd(username) {
+    if (gremlin.has(username)) {
+        let last = gremlin.get(username).kills
+        gremlin.set(username, {"name": username, "kills": last + 1})
+    }
+
+    if (!gremlin.has(username)) {
+        gremlin.set(username, {"name": username, "kills": 1})
+    }
+
+    gremlinSort()
+}
+
+function gremlinRemove(username) {
+    gremlin.delete(username), gremlinSort()
+}
+
+function gremlinSort() {
+    gremlin = new Map([...gremlin.entries()].sort((a, b) => {
+        return b[1].kills - a[1].kills
+    }))
 }
 
 function loadCachedPlayers () {

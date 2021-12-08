@@ -183,6 +183,17 @@ window.addEventListener("load", () => {
         }
     })
 
+    document.addEventListener("click", event => {
+        if (!document.getElementById("toolGremlinMenu").contains(event.target) && document.getElementById("toolGremlin") ? !document.getElementById("toolGremlin").contains(event.target) : null) {
+            document.getElementById("toolGremlinMenu").classList.add("opacityHide")
+
+            setTimeout(() => {
+                document.getElementById("toolGremlinMenu").hideElement()
+                document.getElementById("toolGremlinMenu").classList.remove("opacityHide")
+            }, 350)
+        }
+    })
+
     document.getElementById("toolSearchMenu").addEventListener("keypress", event => {
         if (event.key == "Enter") return overlaySearchPlayer()
     })
@@ -202,6 +213,15 @@ window.addEventListener("load", () => {
         setTimeout(() => {
             document.getElementById("toolSearchMenu").hideElement()
             document.getElementById("toolSearchMenu").classList.remove("opacityHide")
+        }, 350)
+    })
+
+    document.querySelector(".toolGremlinMenuClose").addEventListener("click", () => {
+        document.getElementById("toolGremlinMenu").classList.add("opacityHide")
+
+        setTimeout(() => {
+            document.getElementById("toolGremlinMenu").hideElement()
+            document.getElementById("toolGremlinMenu").classList.remove("opacityHide")
         }, 350)
     })
 })
@@ -229,7 +249,14 @@ function toolMode () {
 }
 
 function toolGremlin () {
+    document.getElementById("toolGremlinMenu").showElement()
 
+    document.getElementById("toolmenu").classList.add("toolmenuRemove")
+
+    setTimeout(() => {
+        document.getElementById("toolmenu").hideElement()
+        document.getElementById("toolmenu").classList.remove("toolmenuRemove")
+    }, 350)
 }
 
 function toolRemoveAll () {
