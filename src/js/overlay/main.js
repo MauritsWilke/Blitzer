@@ -1,21 +1,23 @@
 const LogReader = require('../js/main/logReader.js')
 const { getStats } = require('../js/overlay/overlayBlitzStats.js')
 
+let gremlin = new Map()
 let searchedPlayers = []
 let cachedStats = []
-let gremlin = new Map()
 
 window.addEventListener("load", () => {
     const logPath = localStorage.read("logPath") ?? ""
     const logReader = new LogReader(logPath)
 
-    logReader.on("server_change", () => clearStats(), gremlinClear())
-
-    logReader.on("leave", username => removePlayer(username), gremlinRemove(username))
-    
     logReader.on("join", username => loadStats(username))
 
-    logReader.on("death", username => removePlayer(username), gremlinRemove(username))
+    logReader.on("server_change", () => clearStats(), gremlinClear())
+
+    logReader.on("leave", username => {removePlayer(username), gremlinRemove(username)})
+
+    logReader.on("death", username => {removePlayer(username), gremlinRemove(username)})
+
+    logReader.on("kill", username => gremlinAdd(username))
 
     logReader.on("players", players => {
         let filterdPlayers = players.filter(x => !searchedPlayers.includes(x))
@@ -43,18 +45,18 @@ window.addEventListener("load", () => {
     //     loadStats("minimumwagework")
     // }, 3000)
 
-    loadStats("qu3n")
-    loadStats("minimumwagework")
-    loadStats("wqfle")
-    loadStats("toxicial")
-    loadStats("TheBadAndLucky")
-    loadStats("Smliey")
-    loadStats("sam_play02")
-    loadStats("oeas")
-    loadStats("allowitman")
-    loadStats("deiondivine")
-    loadStats("quig")
-    loadStats("hypixel")
+    // loadStats("qu3n")
+    // loadStats("minimumwagework")
+    // loadStats("wqfle")
+    // loadStats("toxicial")
+    // loadStats("TheBadAndLucky")
+    // loadStats("Smliey")
+    // loadStats("sam_play02")
+    // loadStats("oeas")
+    // loadStats("allowitman")
+    // loadStats("deiondivine")
+    // loadStats("quig")
+    // loadStats("hypixel")
 
     overlayTableSorter ()
 })
@@ -122,14 +124,13 @@ function gremlinClear() {
     gremlin.clear()
 }
 
-function gremlinAdd(username) {
-    if (gremlin.has(username)) {
-        let last = gremlin.get(username).kills
-        gremlin.set(username, {"name": username, "kills": last + 1})
-    }
+async function gremlinAdd(username) {
+    if (gremlin.has(username)) gremlin.set(username, {"name": gremlin.get(username).name, "displayname": username, "head": gremlin.get(username).head, "kills": gremlin.get(username).kills + 1})
 
-    if (!gremlin.has(username)) {
-        gremlin.set(username, {"name": username, "kills": 1})
+    else {
+        let stats = await getStats(username) ?? username
+
+        gremlin.set(username, {"name": stats.name, "displayname": username, "head": stats.head, "kills": 1})
     }
 
     gremlinSort()
@@ -143,6 +144,21 @@ function gremlinSort() {
     gremlin = new Map([...gremlin.entries()].sort((a, b) => {
         return b[1].kills - a[1].kills
     }))
+
+    gremlinLoader()
+}
+
+function gremlinLoader() {
+    let table = document.querySelector(".gremlinTable")
+    table.innerHTML = ""
+
+    gremlin.forEach(player => {
+        let element = document.createElement("tr")
+
+        element.innerHTML = `<td><img src=${player.head}></td><td>${player.name}</td><td>${player.kills}</td>`
+
+        table.append(element)
+    })
 }
 
 function loadCachedPlayers () {

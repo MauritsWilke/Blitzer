@@ -33,7 +33,7 @@ class LogReader extends EventEmmiter {
             for (const latestLog of changedLogs) {
                 if (/\[[^]*\] \[Client thread\/INFO\]: \[CHAT\] [^]*/.test(latestLog)) {
                     const message = latestLog.split("[CHAT] ")[1].trim()
-                    console.log(message)
+                    // console.log(message)
 
                     if (/Sending you to (.*)!/.test(message)) {
                         this.emit("server_change")
@@ -52,6 +52,16 @@ class LogReader extends EventEmmiter {
                     if (/(.*) was killed by (.*)/.test(message)) {
                         const name = message.split(" ")[0]
                         this.emit("death", name)
+                    }
+
+                    if (/(.*) was killed!/.test(message)) {
+                        const name = message.split(" ")[0]
+                        this.emit("death", name)
+                    }
+
+                    if (/(.*) was killed by (.*)/.test(message)) {
+                        const name = message.split(" ")[4].replace(/!/, "")
+                        this.emit("kill", name)
                     }
 
                     if (/,\s/g.test(message)) {

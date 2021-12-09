@@ -22,16 +22,16 @@ async function getStats (username) {
     let ign = username
     let uuid = player.uuid
     let head = `https://crafatar.com/avatars/${player.uuid}?size=64.png`
-    let name = localStorage.read("rankTag") == "disabled" ? await getFormattedRank(player, false) : await getFormattedRank(player, true)
+    let name = localStorage.read("rankTag") == "disabled" ? await getFormattedRank(player, false) : await getFormattedRank(player, true) ?? username
     let kit = player?.stats?.HungerGames?.defaultkit || "Knight"
     let overallWins = (player?.stats?.HungerGames?.wins_solo_normal || 0) + (player?.stats?.HungerGames?.wins_teams_normal || 0)
     let wins = mode == "overall" ? (player?.stats?.HungerGames?.wins_solo_normal || 0) + (player?.stats?.HungerGames?.wins_teams_normal || 0) : player?.stats?.HungerGames?.[`wins_${mode}_normal`] || 0
     let kills = mode == "overall" ? player?.stats?.HungerGames?.kills || 0 : player?.stats?.HungerGames?.[`kills_${mode}_normal`] || 0
-    let deaths = player.stats.HungerGames.deaths || 0
+    let deaths = player.stats?.HungerGames.deaths || 0
     let losses = (player?.stats?.HungerGames?.games_played || 0) - overallWins
     let games = player?.stats?.HungerGames?.games_played || 0
     let wlr = (overallWins / losses).toFixed()
-    let kdr = ((player?.stats?.HungerGames?.kills || 0) / (player.stats.HungerGames.deaths || 0)).toFixed(2)
+    let kdr = ((player?.stats?.HungerGames?.kills || 0) / (player.stats?.HungerGames.deaths || 0)).toFixed(2)
     let kg = ((player?.stats?.HungerGames?.kills || 0) / (player?.stats?.HungerGames?.games_played || 1)).toFixed(2)
     let level = ((Math.sqrt(player.networkExp + 15312.5) - 125/Math.sqrt(2))/(25*Math.sqrt(2))).toFixed(0)
     let xs = amountOfXKits(player)
