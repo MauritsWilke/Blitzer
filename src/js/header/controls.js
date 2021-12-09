@@ -135,7 +135,7 @@ function toolbarLoader() {
             <img src="../../assets/overlayIcons/toolMode.png" data-tippy-content="Search Stats by Mode" id="toolMode">
         </div>
         <div class="toolbar-icons">
-            <img src="../../assets/overlayIcons/toolGremlin.png" data-tippy-content="In-game Gremlin Stats" id="toolGremlin">
+            <img src="../../assets/overlayIcons/toolGremlin.png" data-tippy-content="Ingame Gremlin Stats (Top Ingame Kills)" id="toolGremlin">
         </div>
         <div class="toolbar-icons">
             <img src="../../assets/overlayIcons/removePlayers.png" data-tippy-content="Removes all Players" id="toolRemoveAll">

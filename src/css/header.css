@@ -443,6 +443,7 @@
 
   user-select: none;
   position: fixed;
+  overflow-y: auto;
 
   -webkit-user-drag: none;
   -webkit-app-region: no-drag;
@@ -462,4 +463,41 @@
   font-size: 14px;
 
   background-color: transparent;
+}
+
+.gremlinTable {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  border-collapse: separate;
+  -webkit-border-vertical-spacing: 15px;
+  margin-top: 20px;
+}
+
+.gremlinTable img {
+  width: 24px;
+  border-radius: 2px;
+  margin-right: 8px;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.39);
+}
+
+.gremlinTableRow {
+  color: #b0b0b0;
+  font-family: Varela;
+  font-weight: 300;
+}
+
+.gremlinTableRow td:not(:first-child, :nth-child(3)) {
+    text-indent: 20px;
+    font-weight: 700;
+    text-shadow: 2px 2px black;
+}
+
+.gremlinTitle {
+  color: #fcfcfc;
+  font-family: 'VARELA';
+  font-size: 18px;
+  margin-top: 20px;
+  text-align: center;
+  text-shadow: 4px 4px 4px black;
 }

@@ -122,6 +122,7 @@ function refreshPlayer (username) {
 
 function gremlinClear() {
     gremlin.clear()
+    gremlinLoader()
 }
 
 async function gremlinAdd(username) {
@@ -130,8 +131,12 @@ async function gremlinAdd(username) {
     else {
         let stats = await getStats(username) ?? username
 
+        console.log(stats)
+
         gremlin.set(username, {"name": stats.name, "displayname": username, "head": stats.head, "kills": 1})
     }
+
+    console.log(gremlin)
 
     gremlinSort()
 }
@@ -152,10 +157,12 @@ function gremlinLoader() {
     let table = document.querySelector(".gremlinTable")
     table.innerHTML = ""
 
-    gremlin.forEach(player => {
+    let i = 1
+    gremlin.forEach((player, index) => {
         let element = document.createElement("tr")
 
-        element.innerHTML = `<td><img src=${player.head}></td><td>${player.name}</td><td>${player.kills}</td>`
+        element.innerHTML = `<td>${i++}.</td><td><img src=${player.head}></td><td>${mcParse(player.name)}</td><td>-</td><td>${player.kills}</td>`
+        element.classList = "gremlinTableRow"
 
         table.append(element)
     })
