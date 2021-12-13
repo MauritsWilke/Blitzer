@@ -1,6 +1,8 @@
 const { remote } = require('electron')
-const storage = require('../js/utils/localStorage')
+const { createPopoverEvent } = require('../js/utils/popoverElement')
+
 const win = remote.getCurrentWindow()
+const storage = require('../js/utils/localStorage')
 const localStorage = new storage.localStorage()
 
 window.addEventListener("load", () => {
@@ -147,11 +149,11 @@ function toolbarLoader() {
 
     body.innerHTML = html
 
-    document.getElementById("toolSearch").addEventListener("click", () => toolSearch())
-    document.getElementById("toolMode").addEventListener("click", () => toolMode())
-    document.getElementById("toolGremlin").addEventListener("click", () => toolGremlin())
-    document.getElementById("toolRemoveAll").addEventListener("click", () => toolRemoveAll())
-    document.getElementById("toolRefreshAll").addEventListener("click", () => toolResfreshAll())
+    document.getElementById("toolSearch").addEventListener("click", () => document.getElementById("toolSearchMenu").menuToggle())
+    document.getElementById("toolMode").addEventListener("click", () => document.getElementById("toolModeMenu").menuToggle())
+    document.getElementById("toolGremlin").addEventListener("click", () => document.getElementById("toolGremlinMenu").menuToggle())
+    document.getElementById("toolRemoveAll").addEventListener("click", () => menuHide(), clearStats())
+    document.getElementById("toolRefreshAll").addEventListener("click", () => menuHide(), loadCachedPlayers())
 
     tippy('.toolbar-icons img', {
         animation: "shift-away",
@@ -159,141 +161,46 @@ function toolbarLoader() {
     })
 }
 
-// close loader
+// event loader for menus
 window.addEventListener("load", () => {
-    document.addEventListener("click", event => {
-        if (!document.getElementById("toolModeMenu").contains(event.target) && document.getElementById("toolMode") ? !document.getElementById("toolMode").contains(event.target) : null) {
-            document.getElementById("toolModeMenu").classList.add("opacityHide")
-
-            setTimeout(() => {
-                document.getElementById("toolModeMenu").hideElement()
-                document.getElementById("toolModeMenu").classList.remove("opacityHide")
-            }, 350)
-        }
+    createPopoverEvent({
+        menu: "#toolModeMenu",
+        button: "#toolMode",
+        closeButton: ".toolModeMenuClose",
+        classAnimation: "opacityHide",
+        removeDelay: 350,
     })
 
-    document.addEventListener("click", event => {
-        if (!document.getElementById("toolSearchMenu").contains(event.target) && document.getElementById("toolSearch") ? !document.getElementById("toolSearch").contains(event.target) : null) {
-            document.getElementById("toolSearchMenu").classList.add("opacityHide")
+    createPopoverEvent({
+        menu: "#toolSearchMenu",
+        button: "#toolSearch",
+        closeButton: ".toolSearchMenuClose",
+        classAnimation: "opacityHide",
+        removeDelay: 350,
+    })
 
+    createPopoverEvent({
+        menu: "#toolGremlinMenu",
+        button: "#toolGremlin",
+        closeButton: ".toolGremlinMenuClose",
+        classAnimation: "opacityHide",
+        removeDelay: 350,
+    })
+
+    document.getElementById("toolSearchMenu").addEventListener("keypress", event => {
+        if (event.key == "Enter") {
+            loadStats(document.getElementById("overlaySearcherInput").value)
+
+            document.getElementById("toolSearchMenu").classList.add("opacityHide")
+            document.getElementById("overlaySearcherInput").value = ""
+        
             setTimeout(() => {
                 document.getElementById("toolSearchMenu").hideElement()
                 document.getElementById("toolSearchMenu").classList.remove("opacityHide")
             }, 350)
         }
     })
-
-    document.addEventListener("click", event => {
-        if (!document.getElementById("toolGremlinMenu").contains(event.target) && document.getElementById("toolGremlin") ? !document.getElementById("toolGremlin").contains(event.target) : null) {
-            document.getElementById("toolGremlinMenu").classList.add("opacityHide")
-
-            setTimeout(() => {
-                document.getElementById("toolGremlinMenu").hideElement()
-                document.getElementById("toolGremlinMenu").classList.remove("opacityHide")
-            }, 350)
-        }
-    })
-
-    document.getElementById("toolSearchMenu").addEventListener("keypress", event => {
-        if (event.key == "Enter") return overlaySearchPlayer()
-    })
-
-    document.querySelector(".toolModeMenuClose").addEventListener("click", () => {
-        document.getElementById("toolModeMenu").classList.add("opacityHide")
-
-        setTimeout(() => {
-            document.getElementById("toolModeMenu").hideElement()
-            document.getElementById("toolModeMenu").classList.remove("opacityHide")
-        }, 350)
-    })
-
-    document.querySelector(".toolSearchMenuClose").addEventListener("click", () => {
-        document.getElementById("toolSearchMenu").classList.add("opacityHide")
-
-        setTimeout(() => {
-            document.getElementById("toolSearchMenu").hideElement()
-            document.getElementById("toolSearchMenu").classList.remove("opacityHide")
-        }, 350)
-    })
-
-    document.querySelector(".toolGremlinMenuClose").addEventListener("click", () => {
-        document.getElementById("toolGremlinMenu").classList.add("opacityHide")
-
-        setTimeout(() => {
-            document.getElementById("toolGremlinMenu").hideElement()
-            document.getElementById("toolGremlinMenu").classList.remove("opacityHide")
-        }, 350)
-    })
 })
-
-function toolSearch () {
-    document.getElementById("toolSearchMenu").showElement()
-
-    document.getElementById("toolmenu").classList.add("toolmenuRemove")
-
-    setTimeout(() => {
-        document.getElementById("toolmenu").hideElement()
-        document.getElementById("toolmenu").classList.remove("toolmenuRemove")
-    }, 350)
-}
-
-function toolMode () {
-    document.getElementById("toolModeMenu").showElement()
-
-    document.getElementById("toolmenu").classList.add("toolmenuRemove")
-
-    setTimeout(() => {
-        document.getElementById("toolmenu").hideElement()
-        document.getElementById("toolmenu").classList.remove("toolmenuRemove")
-    }, 350)
-}
-
-function toolGremlin () {
-    document.getElementById("toolGremlinMenu").showElement()
-
-    document.getElementById("toolmenu").classList.add("toolmenuRemove")
-
-    setTimeout(() => {
-        document.getElementById("toolmenu").hideElement()
-        document.getElementById("toolmenu").classList.remove("toolmenuRemove")
-    }, 350)
-}
-
-function toolRemoveAll () {
-    clearStats()
-
-    document.getElementById("toolmenu").classList.add("toolmenuRemove")
-
-    setTimeout(() => {
-        document.getElementById("toolmenu").hideElement()
-        document.getElementById("toolmenu").classList.remove("toolmenuRemove")
-    }, 350)
-}
-
-function toolResfreshAll () {
-    loadCachedPlayers()
-
-    document.getElementById("toolmenu").classList.add("toolmenuRemove")
-
-    setTimeout(() => {
-        document.getElementById("toolmenu").hideElement()
-        document.getElementById("toolmenu").classList.remove("toolmenuRemove")
-    }, 350)
-}
-
-function overlaySearchPlayer () {
-    let username = document.getElementById("overlaySearcherInput").value
-
-    loadStats(username)
-
-    document.getElementById("toolSearchMenu").classList.add("opacityHide")
-    document.getElementById("overlaySearcherInput").value = ""
-
-    setTimeout(() => {
-        document.getElementById("toolSearchMenu").hideElement()
-        document.getElementById("toolSearchMenu").classList.remove("opacityHide")
-    }, 350)
-}
 
 Element.prototype.hideElement = function () {
     return this.classList.add("force-hidden")
@@ -305,4 +212,17 @@ Element.prototype.showElement = function () {
 
 Element.prototype.isHidden = function() {
     return this.classList.contains("force-hidden") ? true : false
+}
+
+Element.prototype.menuToggle = function () {
+    this.showElement(), menuHide()
+}
+
+function menuHide () {
+    document.getElementById("toolmenu").classList.add("toolmenuRemove")
+
+    setTimeout(() => {
+        document.getElementById("toolmenu").hideElement()
+        document.getElementById("toolmenu").classList.remove("toolmenuRemove")
+    }, 350)
 }

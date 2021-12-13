@@ -87,47 +87,69 @@ function highlightPromt () {
         if (e.key == "Enter") return submitButton.click()
     })
     
-    submitButton.addEventListener("click", async () => {
+    submitButton.addEventListener("click", () => {
         let input = document.getElementById("highlightPromtInput").value
 
         body.innerHTML = ""
 
-        let response = await Mojang.getMojang(input)
-
-        if (JSON.stringify(response) === '{}') {
-            return toastify({
-                text: "This player does not exist",
-                duration: 3000,
-                className: "toast warning",
-                position: "left",
-                gravity: "bottom",
-                stopOnFocus: true,
-              }).showToast()
-        }
-
-        let players = localStorage.read("highlightedPlayers") ?? []
-
-        let stat = false
-
-        players.forEach(player => {
-            if (player.uuid == response.id) return stat = true
-        })
-
-        if (stat == false) players.push({"uuid": response.id, "ign": response.name, "head": `https://crafatar.com/avatars/${response.id}?size=64.png`})
-
-        if (stat == true) {
-            toastify({
-                text: "This player is already highlighted",
-                duration: 3000,
-                className: "toast warning",
-                position: "left",
-                gravity: "bottom",
-                stopOnFocus: true,
-              }).showToast()
-        }
-
-        localStorage.write("highlightedPlayers", players)
-        
-        createHighlightCard(), loadCachedPlayers()
+        addHighlight(input), loadCachedPlayers()
     })
+}
+
+function removeHighlight (uuid) {
+    let players = localStorage.read("highlightedPlayers") ?? []
+
+    players.forEach(user => {
+        if (user.uuid == uuid) {
+            let index = players.indexOf(user)
+
+            if (index == 0 && !players[1]) players.splice(0, 0)
+
+            players.splice(index, 1)
+        }
+    })
+
+    if (players.length == 0) return localStorage.remove("highlightedPlayers"), createHighlightCard()
+
+    localStorage.write("highlightedPlayers", players), createHighlightCard()
+}
+
+async function addHighlight (player) {
+    let response = await Mojang.getMojang(player)
+
+    if (JSON.stringify(response) === '{}') {
+        return toastify({
+            text: "This player does not exist",
+            duration: 3000,
+            className: "toast warning",
+            position: "left",
+            gravity: "bottom",
+            stopOnFocus: true,
+          }).showToast()
+    }
+
+    let players = localStorage.read("highlightedPlayers") ?? []
+
+    let stat = false
+
+    players.forEach(player => {
+        if (player.uuid == response.id) return stat = true
+    })
+
+    if (stat == false) players.push({"uuid": response.id, "ign": response.name, "head": `https://crafatar.com/avatars/${response.id}?size=64.png`})
+
+    if (stat == true) {
+        toastify({
+            text: "This player is already highlighted",
+            duration: 3000,
+            className: "toast warning",
+            position: "left",
+            gravity: "bottom",
+            stopOnFocus: true,
+          }).showToast()
+    }
+
+    if (players.length == 0) return
+
+    localStorage.write("highlightedPlayers", players), createHighlightCard()
 }
