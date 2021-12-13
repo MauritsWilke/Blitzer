@@ -20,6 +20,8 @@
     z-index: -1;
     position: fixed;
     user-select: none;
+    overflow-y: auto;
+    overflow-x: auto;
     
     border-bottom-left-radius: var(--temp-corner);
     background-color: var(--temp-body-opacity);

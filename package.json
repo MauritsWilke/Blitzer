@@ -4,36 +4,54 @@
 	"description": "An overlay for the Hypixel gamemode Blitz",
 	"main": "index.js",
 	"scripts": {
-		"setup": "npm run --silent startSetup",
-		"startSetup": "npm i",
-		"poststartSetup": "echo[  && echo Installed all Node Modules, run \"npm start\" to start the application && echo[",
-		"start": "electron ."
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/MauritsWilke/Blitzer.git"
+		"start": "electron .",
+		"publish": "electron-builder -wl -p always"
 	},
 	"keywords": [
 		"blitz",
 		"hypixel",
-		"overlay"
+		"overlay",
+		"blitzer"
 	],
 	"author": "Maurits Wilke; Toxicial",
 	"license": "ISC",
-	"bugs": {
-		"url": "https://github.com/MauritsWilke/Blitzer/issues"
-	},
-	"homepage": "https://github.com/MauritsWilke/Blitzer#readme",
 	"devDependencies": {
 		"electron": "^12.0.0",
-		"electron-store": "^6.0.1"
+		"electron-store": "^6.0.1",
+		"electron-builder": "^22.11.7"
 	},
 	"dependencies": {
+		"electron-store": "^6.0.1",
 		"@simonwep/pickr": "^1.8.2",
+		"electron-updater": "^4.6.1",
 		"hex-to-hsl": "^1.0.2",
 		"minecraft-folder-path": "^1.2.0",
 		"node-fetch": "^2.6.1",
 		"tippy.js": "^6.3.5",
 		"toastify-js": "^1.11.2"
-	}
+	},
+	"build": {
+		"publish": [{
+			"provider": "github",
+			"owner": "toxicial",
+			"repo": "blitzer"
+		}],
+		"appId": "com.github.toxicial.blitzer",
+		"mac": {
+		  "category": "public.app.category.games"
+		},
+		"win": {
+		  "target": "nsis",
+		  "icon": "./assets/BlitzerLogo.png"
+		},
+		"nsis": {
+		  "installerIcon": "./assets/blitzer-logo.ico",
+		  "oneClick": false
+		},
+		"linux": {
+		  "icon": "./assets/BlitzerLogo.png",
+		  "category": "public.app.category.games",
+		  "target": "AppImage"
+		}
+	  }
 }

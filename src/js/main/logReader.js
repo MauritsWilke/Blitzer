@@ -33,7 +33,11 @@ class LogReader extends EventEmmiter {
             for (const latestLog of changedLogs) {
                 if (/\[[^]*\] \[Client thread\/INFO\]: \[CHAT\] [^]*/.test(latestLog)) {
                     const message = latestLog.split("[CHAT] ")[1].trim()
-                    // console.log(message)
+
+                    if (/Your new API key is /.test(message)) {
+                        const key = message.split(" ")[5]
+                        this.emit("api", key)
+                    }
 
                     if (/Sending you to (.*)!/.test(message)) {
                         this.emit("server_change")

@@ -1,5 +1,6 @@
 const electron = require('electron')
 const { app, BrowserWindow } = require('electron')
+const { autoUpdater } = require('electron-updater')
 const path = require('path')
 const config = require(`./src/config.json`)
 
@@ -21,6 +22,8 @@ function createWindow() {
 		}
 	})
 
+	autoUpdater.checkForUpdatesAndNotify()
+
 	mainWindow.loadFile('./src/html/overlay.html')
 
 	if (process.os == "darwin") app.dock.hide()
@@ -30,6 +33,8 @@ function createWindow() {
 
 app.whenReady().then(() => {
 	createWindow()
+
+	
 
 	app.on('activate', function () {
 		if (BrowserWindow.getAllWindows().length === 0) createWindow()

@@ -183,7 +183,7 @@
 
 @keyframes toast {
   from{ transform: translateX(0); }
-  to{ transform: translateX(170%); }
+  to{ transform: translateX(135%); }
 }
 
 .toast-close {

@@ -13,6 +13,8 @@ window.addEventListener("load", () => {
 
     logReader.on("server_change", () => clearStats(), gremlinClear())
 
+    logReader.on("api", key => setApi(key))
+
     logReader.on("leave", username => {removePlayer(username), gremlinRemove(username)})
 
     logReader.on("death", username => {removePlayer(username), gremlinRemove(username)})

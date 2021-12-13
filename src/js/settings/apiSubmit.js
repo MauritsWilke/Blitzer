@@ -27,32 +27,40 @@ window.addEventListener("load", async () => {
     button.addEventListener("click", async () => {
         let key = input.value
 
-        let status = await Hypixel.getKeyStatus(key)
+        setApi(key)
+    })
+})
 
-        if (JSON.stringify(status) === '{}') {
-            field.style.borderColor = "#85120E"
+async function setApi (key) {
+    let field = document.querySelector(".apiKeySubmitter fieldset")
+    let input = document.getElementById("apiInput")
+    let status = await Hypixel.getKeyStatus(key)
 
-            return toastify({
-                text: "Invalid API Key!",
-                duration: 3000,
-                className: "toast warning",
-                position: "left",
-                gravity: "bottom",
-                stopOnFocus: true,
-              }).showToast()
-        }
+    input.value = key
 
-        field.style.borderColor = "#336c28"
+    if (JSON.stringify(status) === '{}') {
+        field.style.borderColor = "#85120E"
 
-        toastify({
-            text: "Success!",
+        return toastify({
+            text: "Invalid API Key!",
             duration: 3000,
-            className: "toast success",
+            className: "toast warning",
             position: "left",
             gravity: "bottom",
             stopOnFocus: true,
           }).showToast()
+    }
 
-        localStorage.write("api", key)
-    })
-})
+    field.style.borderColor = "#336c28"
+
+    toastify({
+        text: "Success!",
+        duration: 3000,
+        className: "toast success",
+        position: "left",
+        gravity: "bottom",
+        stopOnFocus: true,
+      }).showToast()
+
+    localStorage.write("api", key)
+}
