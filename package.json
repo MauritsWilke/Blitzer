@@ -5,7 +5,8 @@
 	"main": "index.js",
 	"scripts": {
 		"start": "electron .",
-		"publish": "electron-builder -wl -p always"
+		"build": "electron-builder -w",
+		"publish": "electron-builder -w -p always"
 	},
 	"keywords": [
 		"blitz",

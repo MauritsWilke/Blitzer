@@ -1,4 +1,7 @@
-window.addEventListener("load", () => {
+const { appVersion } = require('../js/utils/version')
+
+window.addEventListener("load", async () => {
+    let versionTitle = document.querySelector(".versionTitle")
     let settingBodys = document.querySelectorAll(".setting-body")
     let settingButtons = document.querySelectorAll(".setting-button")
 
@@ -53,5 +56,7 @@ window.addEventListener("load", () => {
         playerHighlightSetting.classList.toggle("hidden")
         playerHighlightButton.classList.toggle("span-selected")
     })
-    
+
+
+    versionTitle.innerHTML = `v${await appVersion()} | © Blitzer Inc.`
 })
