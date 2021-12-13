@@ -43,7 +43,7 @@ function createHighlightCard () {
             
             let players = localStorage.read("highlightedPlayers")
 
-            if (index == 0 && !players[1]) return localStorage.remove("highlightedPlayers"), createHighlightCard()
+            if (index == 0 && !players[1]) return localStorage.remove("highlightedPlayers"), createHighlightCard(), loadCachedPlayers()
             
             players.splice(index, 1)
 

@@ -296,7 +296,7 @@ function tableConstructor (stats, username) {
             else {
                 element.style.backgroundColor = ""
 
-                removeHighlight(player)
+                removeHighlight(uuid)
             }
         }
     })

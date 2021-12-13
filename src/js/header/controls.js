@@ -152,8 +152,8 @@ function toolbarLoader() {
     document.getElementById("toolSearch").addEventListener("click", () => document.getElementById("toolSearchMenu").menuToggle())
     document.getElementById("toolMode").addEventListener("click", () => document.getElementById("toolModeMenu").menuToggle())
     document.getElementById("toolGremlin").addEventListener("click", () => document.getElementById("toolGremlinMenu").menuToggle())
-    document.getElementById("toolRemoveAll").addEventListener("click", () => menuHide(), clearStats())
-    document.getElementById("toolRefreshAll").addEventListener("click", () => menuHide(), loadCachedPlayers())
+    document.getElementById("toolRemoveAll").addEventListener("click", () => {menuHide(), clearStats()})
+    document.getElementById("toolRefreshAll").addEventListener("click", () => {menuHide(), loadCachedPlayers()})
 
     tippy('.toolbar-icons img', {
         animation: "shift-away",
