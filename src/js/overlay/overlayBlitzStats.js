@@ -22,7 +22,8 @@ async function getStats (username) {
     let ign = username
     let uuid = player.uuid
     let head = `https://crafatar.com/avatars/${player.uuid}?size=64.png`
-    let name = localStorage.read("rankTag") == "disabled" ? await getFormattedRank(player, false) : await getFormattedRank(player, true) ?? username
+    let guildTag = localStorage.read("guildTag") == "disabled" ? "" : ` ${await getGuildTag(uuid)}`
+    let name = localStorage.read("rankTag") == "disabled" ? await getFormattedRank(player, false) + guildTag : await getFormattedRank(player, true) + guildTag
     let kit = player?.stats?.HungerGames?.defaultkit || "Knight"
     let overallWins = (player?.stats?.HungerGames?.wins_solo_normal || 0) + (player?.stats?.HungerGames?.wins_teams_normal || 0)
     let wins = mode == "overall" ? (player?.stats?.HungerGames?.wins_solo_normal || 0) + (player?.stats?.HungerGames?.wins_teams_normal || 0) : player?.stats?.HungerGames?.[`wins_${mode}_normal`] || 0
@@ -70,6 +71,18 @@ async function getData (username) {
     if (!data.player) return "nicked"
 
     return data.player
+}
+
+async function getGuildTag (uuid) {
+    let key = localStorage.read("api")
+
+    let data = await Hypixel.getGuild(key, uuid)
+
+    let tag = data?.guild?.tag || ""
+    let tagColor = data?.guild?.tagColor || ""
+    let finalTagColor = rankColor[tagColor].mc || ""
+
+    return `${finalTagColor}[${tag}]${finalTagColor}`
 }
 
 function getPlayerTypeRank(player) {

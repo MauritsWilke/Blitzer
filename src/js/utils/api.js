@@ -55,12 +55,25 @@ class Hypixel {
     }
 
     async getPlayer (key, uuid) {
-        const res = await fetch(`https://api.hypixel.net/player?key=${key}&uuid=${uuid}`)
+        const response = await fetch(`https://api.hypixel.net/player?key=${key}&uuid=${uuid}`)
 
-        const body = await res.text()
+        const body = await response.text()
         let json = {}
 
-        if (res.status == 200) {
+        if (response.status == 200) {
+            json = JSON.parse(body)
+        }
+
+        return json
+    }
+
+    async getGuild (key, uuid) {
+        const response = await fetch(`https://api.hypixel.net/guild?key=${key}&player=${uuid}`)
+
+        const body = await response.text()
+        let json = {}
+
+        if (response.status == 200) {
             json = JSON.parse(body)
         }
 
